@@ -8,13 +8,13 @@ public class WebDriver {
 	public static ChromeDriver webDriver = webDriver();
 
 	public static ChromeDriver webDriver() {
-		System.setProperty("webdriver.chrome.driver", "/usr/local/share/chromedriver");
+		System.setProperty("webdriver.chrome.driver", "Recursos//chromedriver.exe");
 		final ChromeOptions options = new ChromeOptions();
 		options.addArguments("--disable-extensions");
 		options.addArguments("--headless");
 		options.addArguments("--disable-gpu");
 		options.addArguments("--no-sandbox");
-		return new ChromeDriver(options);
+		return new ChromeDriver();
 	}
 
 }
