@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import es.e3corp.eSalud.repository.UsuarioRepository;
@@ -16,17 +15,13 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class Gestionar_RolesSteps {
-  WebDriver driver;
+  ChromeDriver driver = WebDriver.webDriver;
   List<Map<String, String>> a;
   UsuarioRepository ur;
 
   @Given("iniciamos la aplicación y nos dirigimos a registrar personal medico")
   public void iniciamos_la_aplicación_y_nos_dirigimos_a_registrar_personal_medico() {
 
-    System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe");
-
-    driver = new ChromeDriver();
-    driver.manage().window().maximize();
     driver.get("http://localhost:8080/auth/login");
 
     driver.findElement(By.xpath("//input[@placeholder='DNI']")).sendKeys("admin");

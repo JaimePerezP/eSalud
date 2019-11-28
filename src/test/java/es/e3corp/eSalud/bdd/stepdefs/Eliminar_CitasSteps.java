@@ -1,15 +1,10 @@
 package es.e3corp.eSalud.bdd.stepdefs;
 
-import java.nio.file.FileSystems;
-import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
 
 import es.e3corp.eSalud.repository.UsuarioRepository;
 import io.cucumber.java.en.Given;
@@ -18,7 +13,7 @@ import io.cucumber.java.en.When;
 
 public class Eliminar_CitasSteps {
 
-  WebDriver driver;
+  ChromeDriver driver = WebDriver.webDriver;
   List<Map<String, String>> a;
   UsuarioRepository usuarioRepository;
   /*
@@ -32,11 +27,6 @@ public class Eliminar_CitasSteps {
 
     /* GUARDAR CITA FICTICIA EN LA BASE DE DATOS */
 
-    Path path = FileSystems.getDefault().getPath("src/test/resources/drivers/geckodriver.exe");
-    System.setProperty("webdriver.gecko.driver", path.toString());
-    FirefoxOptions fo = new FirefoxOptions();
-    fo.addArguments("--headless");
-    WebDriver driver = new FirefoxDriver(fo);
     driver.get("http://localhost:8080/auth/login");
 
     a = dataTable.asMaps(String.class, String.class);

@@ -2,16 +2,11 @@ package es.e3corp.eSalud.bdd.stepdefs;
 
 import static org.junit.Assert.assertEquals;
 
-import java.nio.file.FileSystems;
-import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
 
 import es.e3corp.eSalud.repository.UsuarioRepository;
 import io.cucumber.java.en.Given;
@@ -20,19 +15,12 @@ import io.cucumber.java.en.When;
 
 public class LoginSteps {
 
-  WebDriver driver;
+  ChromeDriver driver = WebDriver.webDriver;
   UsuarioRepository ur;
   List<Map<String, String>> a;
 
   @Given("abrimos el navegador e iniciamos la aplicacion")
   public void abrimos_el_navegador_e_iniciamos_la_aplicacion() {
-
-    Path path = FileSystems.getDefault().getPath("src/test/resources/drivers/geckodriver.exe");
-    System.setProperty("webdriver.gecko.driver", path.toString());
-    FirefoxOptions fo = new FirefoxOptions();
-    fo.addArguments("--headless");
-    WebDriver driver = new FirefoxDriver(fo);
-
     driver.get("http://localhost:8080/auth/login");
   }
 

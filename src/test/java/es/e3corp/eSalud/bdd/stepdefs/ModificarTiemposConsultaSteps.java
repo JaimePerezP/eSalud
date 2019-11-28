@@ -1,15 +1,10 @@
 package es.e3corp.eSalud.bdd.stepdefs;
 
-import java.nio.file.FileSystems;
-import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -17,7 +12,7 @@ import io.cucumber.java.en.When;
 
 public class ModificarTiemposConsultaSteps {
 
-  WebDriver driver;
+  ChromeDriver driver = WebDriver.webDriver;
   List<Map<String, String>> a;
   // Especialidad e = new Especialidad();
   // @Autowired
@@ -25,11 +20,6 @@ public class ModificarTiemposConsultaSteps {
 
   @Given("un usuario logueado como gestor")
   public void un_usuario_logueado_como_gestor(io.cucumber.datatable.DataTable dataTable) {
-    Path path = FileSystems.getDefault().getPath("src/test/resources/drivers/geckodriver.exe");
-    System.setProperty("webdriver.gecko.driver", path.toString());
-    FirefoxOptions fo = new FirefoxOptions();
-    fo.addArguments("--headless");
-    WebDriver driver = new FirefoxDriver(fo);
     driver.get("http://localhost:8080/auth/login");
 
     a = dataTable.asMaps(String.class, String.class);

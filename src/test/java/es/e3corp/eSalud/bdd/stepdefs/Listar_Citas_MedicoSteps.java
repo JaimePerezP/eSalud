@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -23,16 +22,12 @@ public class Listar_Citas_MedicoSteps {
   UsuarioRepository usuarioRepository;
   // @Autowired
   // CitasRepository citasRepository;
-  WebDriver driver;
+  ChromeDriver driver = WebDriver.webDriver;
   List<Map<String, String>> a;
   Usuario u;
 
   @Given("un usuario que se loguea como médico")
   public void un_usuario_que_se_loguea_como_médico(io.cucumber.datatable.DataTable dataTable) {
-    System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver");
-
-    driver = new ChromeDriver();
-    driver.manage().window().maximize();
     driver.get("http://localhost:8080/auth/login");
 
     a = dataTable.asMaps(String.class, String.class);
