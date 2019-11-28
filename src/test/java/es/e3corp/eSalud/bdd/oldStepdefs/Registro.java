@@ -1,4 +1,4 @@
-package es.e3corp.eSalud.bdd.stepdefs;
+package es.e3corp.eSalud.bdd.oldStepdefs;
 
 import static org.junit.Assert.assertEquals;
 
@@ -9,6 +9,7 @@ import java.util.Map;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import es.e3corp.eSalud.bdd.stepdefs.WebDriver;
 import es.e3corp.eSalud.repository.UsuarioRepository;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

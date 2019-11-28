@@ -1,4 +1,4 @@
-package es.e3corp.eSalud.bdd.stepdefs;
+package es.e3corp.eSalud.bdd.oldStepdefs;
 
 import java.util.List;
 import java.util.Map;
@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import es.e3corp.eSalud.bdd.stepdefs.WebDriver;
 import es.e3corp.eSalud.repository.UsuarioRepository;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

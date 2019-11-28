@@ -1,4 +1,4 @@
-package es.e3corp.eSalud.bdd.stepdefs;
+package es.e3corp.eSalud.bdd.oldStepdefs;
 
 import static org.junit.Assert.assertEquals;
 
