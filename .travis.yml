@@ -1,13 +1,20 @@
 language: java
-before_install:
-- sudo apt-get update
-- chmod +x src/test/resources/drivers/geckodriver
-    
+
+jdk:
+  - openjdk8
+
 addons:
-  firefox: "latest"
+  chrome: stable
+
+install:
+  - wget -N http://chromedriver.storage.googleapis.com/77.0.3865.40/chromedriver_linux64.zip -P ~/
+  - unzip ~/chromedriver_linux64.zip -d ~/
+  - rm ~/chromedriver_linux64.zip
+  - sudo mv -f ~/chromedriver /usr/local/share/
+  - sudo chmod +x /usr/local/share/chromedriver
 
 deploy:
   provider: heroku
   api_key: 
-    secure: $HEROKU
-  app: esalud
+    secure: 5468840c-379e-49a7-b61d-274f5f9f15ff
+  app: esalud-e4
