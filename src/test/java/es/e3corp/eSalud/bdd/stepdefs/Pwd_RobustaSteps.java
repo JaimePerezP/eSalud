@@ -2,6 +2,7 @@ package es.e3corp.eSalud.bdd.stepdefs;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNull;
 
 import java.util.List;
 import java.util.Map;
@@ -54,7 +55,10 @@ public class Pwd_RobustaSteps {
 		
 		if (tabla.get(0).get("resultadoEsperado") == "REGISTRO OK") {
 			assertEquals(tabla.get(0).get("dni"), this.ur.findOne(tabla.get(0).get("dni")));
-			
+			this.ur.deleteUsuario(tabla.get(0).get("dni"));
+		} 
+		else if(tabla.get(0).get("resultadoEsperado") == "FALLO, CONTRASEÑA DEBIL"){
+			assertNull(this.ur.findOne(tabla.get(0).get("dni")));
 		}
 	}
 

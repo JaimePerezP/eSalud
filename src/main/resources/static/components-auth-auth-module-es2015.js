@@ -321,7 +321,7 @@ let RegisterComponent = class RegisterComponent {
             return;
         }
         if ((this.f.password.value.length < 5) || (checkPass(this.f.password) == false)) {
-            this.alertService.error("Formato de contraseña incorrecta. La contraseña debe contener al menos 6 carácteres, mayúsuculas y minúsculas, números y algún símbolo.", false);
+            this.alertService.error("Formato de contraseña incorrecta. La contraseña debe contener al menos 6 carácteres, al menos unamayúsucula, un número y un símbolo.", false);
             return;
         }
         if (this.f.password.value != this.f.password2.value) {
@@ -373,6 +373,7 @@ let RegisterComponent = class RegisterComponent {
             }
         }
         function checkPass(inputText) {
+            var texto = inputText.value;
             var numeros = "0123456789";
             var mayusculas = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
             var simbolo = "<>ºª\!|@·#$%&¬/()=?¿¡/*-+,;:^.'`[]{}_";
@@ -380,21 +381,29 @@ let RegisterComponent = class RegisterComponent {
             var hayMayuscula = false;
             var haySimbolo = false;
             var valido = true;
-            for (var i = 0; i < inputText.length; i++) {
-                if (numeros.indexOf(inputText.charAt(i)) >= 0) {
-                    hayNumero = true;
+            console.log(numeros.length);
+            for (var i = 0; i < texto.length; i++) {
+                for (var l = 0; l < numeros.length; l++) {
+                    if (texto[i] == numeros[l]) {
+                        hayNumero = true;
+                    }
                 }
             }
-            for (var j = 0; j < inputText.length; j++) {
-                if (mayusculas.indexOf(inputText.charAt(i)) >= 0) {
-                    hayMayuscula = true;
+            for (var j = 0; j < texto.length; j++) {
+                for (var m = 0; m < mayusculas.length; m++) {
+                    if (texto[j] == mayusculas[m]) {
+                        hayMayuscula = true;
+                    }
                 }
             }
-            for (var k = 0; k < inputText.length; k++) {
-                if (simbolo.indexOf(inputText.charAt(i)) >= 0) {
-                    haySimbolo = true;
+            for (var k = 0; k < texto.length; k++) {
+                for (var n = 0; n < simbolo.length; n++) {
+                    if (texto[k] == simbolo[n]) {
+                        haySimbolo = true;
+                    }
                 }
             }
+            console.log(hayNumero + " " + haySimbolo + " " + hayMayuscula);
             if (!hayMayuscula || !haySimbolo || !hayNumero) {
                 valido = false;
             }
