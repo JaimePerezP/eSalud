@@ -1,10 +1,19 @@
 package es.e3corp.eSalud.bdd.stepdefs;
 
+import java.util.List;
+import java.util.Map;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeDriver;
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class Cambio_ventanasSteps {
+	
+	ChromeDriver driver = WebDriver.webDriver;
+	List<Map<String, String>> tabla;
 
 	@Given("se registra el usuario")
 	public void se_registra_el_usuario(io.cucumber.datatable.DataTable dataTable) {
@@ -15,7 +24,22 @@ public class Cambio_ventanasSteps {
 		// Double, Byte, Short, Long, BigInteger or BigDecimal.
 		//
 		// For other transformations you can register a DataTableType.
-		throw new cucumber.api.PendingException();
+		
+		
+		tabla = dataTable.asMaps(String.class, String.class);
+		    
+		driver.findElement(By.xpath("//input[@placeholder='DNI']")).sendKeys(tabla.get(0).get("dni"));
+		driver.findElement(By.xpath("//input[@placeholder='Nombre']")).sendKeys(tabla.get(0).get("nombre"));
+		driver.findElement(By.xpath("//input[@placeholder='Apellidos']")).sendKeys(tabla.get(0).get("apellidos"));
+		driver.findElement(By.xpath("//input[@placeholder='Contraseña']")).sendKeys(tabla.get(0).get("pwd"));
+		driver.findElement(By.xpath("//input[@placeholder='Teléfono']")).sendKeys(tabla.get(0).get("numTelefono"));
+		driver.findElement(By.xpath("//input[@placeholder='Correo electrónico']")).sendKeys(tabla.get(0).get("email"));
+		driver.findElement(By.xpath("//input[@placeholder='Localidad']")).sendKeys(tabla.get(0).get("localidad"));	
+		driver.findElement(By.xpath("//input[@placeholder='Rol']")).sendKeys(tabla.get(0).get("rol"));
+		driver.findElement(By.xpath("//input[@placeholder='Especialidad']")).sendKeys(tabla.get(0).get("especialidad"));	
+		
+		
+		//throw new cucumber.api.PendingException();
 	}
 
 	@Given("se abre navegador y se va a pantalla de iniciar sesion")
@@ -33,7 +57,15 @@ public class Cambio_ventanasSteps {
 		// Double, Byte, Short, Long, BigInteger or BigDecimal.
 		//
 		// For other transformations you can register a DataTableType.
-		throw new cucumber.api.PendingException();
+		
+		
+		tabla = dataTable.asMaps(String.class, String.class);
+	    
+		driver.findElement(By.xpath("//input[@placeholder='DNI']")).sendKeys(tabla.get(0).get("dni"));
+		driver.findElement(By.xpath("//input[@placeholder='Contraseña']")).sendKeys(tabla.get(0).get("pwd"));
+		
+		
+		//throw new cucumber.api.PendingException();
 	}
 
 	@When("se abre la vista correspondiente al usuario")
@@ -45,7 +77,14 @@ public class Cambio_ventanasSteps {
 		// Double, Byte, Short, Long, BigInteger or BigDecimal.
 		//
 		// For other transformations you can register a DataTableType.
-		throw new cucumber.api.PendingException();
+		
+		
+		tabla = dataTable.asMaps(String.class, String.class);
+	    
+		driver.findElement(By.xpath("//input[@placeholder='Rol']")).sendKeys(tabla.get(0).get("rol"));
+		
+		
+		//throw new cucumber.api.PendingException();
 	}
 
 	@When("se pulsa el boton de cambio de vista")
@@ -57,7 +96,14 @@ public class Cambio_ventanasSteps {
 		// Double, Byte, Short, Long, BigInteger or BigDecimal.
 		//
 		// For other transformations you can register a DataTableType.
-		throw new cucumber.api.PendingException();
+		
+		
+		tabla = dataTable.asMaps(String.class, String.class);
+	    
+		driver.findElement(By.xpath("//input[@placeholder='Rol']")).sendKeys(tabla.get(0).get("rol"));
+		
+		
+		//throw new cucumber.api.PendingException();
 	}
 
 	@When("se abre la vista de paciente")
@@ -76,7 +122,14 @@ public class Cambio_ventanasSteps {
 		// Double, Byte, Short, Long, BigInteger or BigDecimal.
 		//
 		// For other transformations you can register a DataTableType.
-		throw new cucumber.api.PendingException();
+		
+		
+		tabla = dataTable.asMaps(String.class, String.class);
+	    
+		driver.findElement(By.xpath("//input[@placeholder='Rol']")).sendKeys(tabla.get(0).get("rol"));
+		
+		
+		//throw new cucumber.api.PendingException();
 	}
 
 	@Then("vuelve a la vista correspondiente al usuario")
@@ -88,7 +141,14 @@ public class Cambio_ventanasSteps {
 		// Double, Byte, Short, Long, BigInteger or BigDecimal.
 		//
 		// For other transformations you can register a DataTableType.
-		throw new cucumber.api.PendingException();
+		
+		
+		tabla = dataTable.asMaps(String.class, String.class);
+	    
+		driver.findElement(By.xpath("//input[@placeholder='Rol']")).sendKeys(tabla.get(0).get("rol"));
+		
+		
+		//throw new cucumber.api.PendingException();
 	}
 
 }
