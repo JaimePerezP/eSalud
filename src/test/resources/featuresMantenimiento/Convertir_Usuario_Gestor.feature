@@ -1,10 +1,10 @@
-Feature: Crear usuario solo si la contraseña es robusta
+Feature: Convertir usuario a gestor por parte del gestor
 
 	Scenario Outline: <testCase> <resultadoEsperado>
 	
 	Given se registra un usuario de prueba
 	|	dni			| nombre  		| apellidos  		 | pwd   				| numTelefono  	| email  								| localidad  	| rol 		| 
-  |00000001 | Prueba      | Prueba Prueba  | Prueba-12345 | 777222111     | prueba@ejemplo.com 		|	Ciudad real	| paciente|
+  |00000003 | Prueba      | Prueba Prueba  | Prueba-12345 | 777222111     | prueba@ejemplo.com 		|	Ciudad real	| paciente|
 	
 	When se introducen el rol de modificación
 		|	rol	|

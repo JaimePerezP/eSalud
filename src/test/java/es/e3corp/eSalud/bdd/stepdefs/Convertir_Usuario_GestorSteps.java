@@ -1,16 +1,12 @@
 package es.e3corp.eSalud.bdd.stepdefs;
 
-import static org.junit.Assert.assertEquals;
-
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import es.e3corp.eSalud.model.Usuario;
 import es.e3corp.eSalud.repository.UsuarioRepository;
@@ -18,9 +14,11 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 public class Convertir_Usuario_GestorSteps {
 
 	List<Map<String, String>> tabla;
+	@Autowired
 	UsuarioRepository ur;
 
 	@Given("se registra un usuario de prueba")
@@ -32,7 +30,6 @@ public class Convertir_Usuario_GestorSteps {
 		// Double, Byte, Short, Long, BigInteger or BigDecimal.
 		//
 		// For other transformations you can register a DataTableType.
-		tabla = dataTable.asMaps(String.class, String.class);
 
 		tabla = dataTable.asMaps(String.class, String.class);
 	    String dni = tabla.get(0).get("dni");
