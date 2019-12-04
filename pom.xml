@@ -24,6 +24,10 @@
 		<maven-compiler-plugin-version>3.1</maven-compiler-plugin-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<sonar.projectKey>JaimePerezP_eSalud</sonar.projectKey>
+		<sonar.organization>jaimeperezp</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+		<sonar.login>78bb260f3f39727b3b1650fd4f3578449540258d</sonar.login>
 	</properties>
 
 	<dependencies>
