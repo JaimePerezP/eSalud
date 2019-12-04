@@ -1,7 +1,6 @@
 package es.e3corp.eSalud.bdd.stepdefs;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNull;
 
 import java.util.List;
@@ -9,8 +8,6 @@ import java.util.Map;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
-
-import com.google.common.collect.Table;
 
 import es.e3corp.eSalud.repository.UsuarioRepository;
 import io.cucumber.java.en.Given;
