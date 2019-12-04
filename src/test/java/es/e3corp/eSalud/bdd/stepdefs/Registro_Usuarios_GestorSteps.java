@@ -4,23 +4,26 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
-import es.e3corp.eSalud.Service.UsuarioService;
 import es.e3corp.eSalud.model.Usuario;
+import es.e3corp.eSalud.repository.UsuarioRepository;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 public class Registro_Usuarios_GestorSteps {
 
 	List<Map<String, String>> tabla;
 	ChromeDriver driver = WebDriver.webDriver;
-	UsuarioService usersService;
+	@Autowired
+	UsuarioRepository ur;
 
 	@Given("se registra un gestor")
 	public void se_registra_un_gestor(io.cucumber.datatable.DataTable dataTable) {
@@ -41,7 +44,7 @@ public class Registro_Usuarios_GestorSteps {
 		String localidad = tabla.get(0).get("localidad");
 		String rol = tabla.get(0).get("rol");
 		Usuario usuario = new Usuario(dni, nombre, apellidos, pwd, rol, null, null, tlf, localidad, null, email);
-		usersService.saveUsuario(usuario);
+		ur.saveUsuario(usuario);
 	}
 
 	@Given("se abre navegador y se va a pantalla de inicio")
@@ -58,6 +61,7 @@ public class Registro_Usuarios_GestorSteps {
 		// Double, Byte, Short, Long, BigInteger or BigDecimal.
 		//
 		// For other transformations you can register a DataTableType.
+		tabla = dataTable.asMaps(String.class, String.class);
 		driver.findElement(By.xpath("//*[@id=\"dni\"]")).sendKeys(tabla.get(0).get("dni"));
 		driver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys(tabla.get(0).get("pwd"));
 		driver.findElement(By.xpath("/html/body/linl/app-root/app-login/div/form/div/div/p[1]/input")).click();
@@ -65,25 +69,56 @@ public class Registro_Usuarios_GestorSteps {
 
 	@When("entra en la vista del gestor")
 	public void entra_en_la_vista_del_gestor() {
-		WebDriverWait wait = new WebDriverWait(driver, 2);
-		wait.until(ExpectedConditions.visibilityOf(
-				driver.findElementByXPath("/html/body/linl/app-root/app-sidenavadmin/div/mat-toolbar/h1")));
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		assertEquals(
 				driver.findElementByXPath("/html/body/linl/app-root/app-sidenavadmin/div/mat-toolbar/h1").getText(),
 				"Administrador");
 	}
 
 	@When("se va a la ventana de registro del gestor")
-	public void se_va_a_la_ventana_de_registro_del_gestor() {
-		if (tabla.get(0).get("resultadoEsperado") == "REGISTRO MEDICO OK") {
-			driver.findElementByXPath(
-					"/html/body/linl/app-root/app-sidenavadmin/div/mat-sidenav-container/mat-sidenav/div/mat-nav-list/a[3]/div/div[1]").click();
+	public void se_va_a_la_ventana_de_registro_del_gestor(io.cucumber.datatable.DataTable dataTable) {
+		tabla = dataTable.asMaps(String.class, String.class);
+		if (tabla.get(0).get("resultadoEsperado").equals("REGISTRO MEDICO OK")) {
+			driver.get("http://localhost:8080/admin/RegistrarMedico");
+		} else if (tabla.get(0).get("resultadoEsperado").contentEquals("REGISTRO PACIENTE OK")) {
+
+		} else if (tabla.get(0).get("resultadoEsperado").equals("REGISTRO ADMIN OK")) {
+
 		}
 	}
 
 	@Then("el gestor lo registra en la aplicacion")
-	public void el_gestor_lo_registra_en_la_aplicacion() {
-
+	public void el_gestor_lo_registra_en_la_aplicacion(io.cucumber.datatable.DataTable dataTable) {
+		tabla = dataTable.asMaps(String.class, String.class);
+		if (tabla.get(0).get("resultadoEsperado").equals("REGISTRO MEDICO OK")) {
+			driver.findElementByXPath(
+					"/html/body/linl/app-root/app-sidenavadmin/div/mat-sidenav-container/mat-sidenav-content/app-registrarmedico/div/form/div[1]/div[1]/div[2]/input")
+					.sendKeys(tabla.get(0).get("dni"));
+			driver.findElementByXPath(
+					"/html/body/linl/app-root/app-sidenavadmin/div/mat-sidenav-container/mat-sidenav-content/app-registrarmedico/div/form/div[1]/div[2]/div[2]/input")
+					.sendKeys(tabla.get(0).get("nombre"));
+			driver.findElementByXPath(
+					"/html/body/linl/app-root/app-sidenavadmin/div/mat-sidenav-container/mat-sidenav-content/app-registrarmedico/div/form/div[1]/div[3]/div[2]/input")
+					.sendKeys(tabla.get(0).get("apellidos"));
+			driver.findElementByXPath(
+					"/html/body/linl/app-root/app-sidenavadmin/div/mat-sidenav-container/mat-sidenav-content/app-registrarmedico/div/form/div[1]/div[4]/div[2]/input")
+					.sendKeys(tabla.get(0).get("pwd"));
+			driver.findElementByXPath(
+					"/html/body/linl/app-root/app-sidenavadmin/div/mat-sidenav-container/mat-sidenav-content/app-registrarmedico/div/form/div[1]/div[5]/div[2]/select")
+					.sendKeys(tabla.get(0).get("especialidad"));
+			driver.findElementByXPath(
+					"/html/body/linl/app-root/app-sidenavadmin/div/mat-sidenav-container/mat-sidenav-content/app-registrarmedico/div/form/div[1]/div[6]/div[2]/input")
+					.sendKeys(tabla.get(0).get("centro"));
+			driver.findElementByXPath(
+					"/html/body/linl/app-root/app-sidenavadmin/div/mat-sidenav-container/mat-sidenav-content/app-registrarmedico/div/form/div[1]/div[7]/div[2]/input")
+					.sendKeys(tabla.get(0).get("numTelefono"));
+			driver.findElementByXPath(
+					"/html/body/linl/app-root/app-sidenavadmin/div/mat-sidenav-container/mat-sidenav-content/app-registrarmedico/div/form/div[1]/div[8]/div[2]/input")
+					.sendKeys(tabla.get(0).get("email"));
+			driver.findElementByXPath(
+					"/html/body/linl/app-root/app-sidenavadmin/div/mat-sidenav-container/mat-sidenav-content/app-registrarmedico/div/form/div[2]/p[1]/input")
+					.click();
+		}
 	}
 
 }
