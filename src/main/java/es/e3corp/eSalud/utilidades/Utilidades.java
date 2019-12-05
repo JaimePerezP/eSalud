@@ -22,7 +22,10 @@ import es.e3corp.eSalud.model.Usuario;
  * @author e3corp
  */
 public class Utilidades {
-
+  private static final String UTF8 = "utf-8";	
+  private static final String DESEDE = "DESede"; 
+  private static final String TAMAÑO = "Tamaño de la lista normal: ";
+  
   /**
    * Método para encriptar texto.
    * 
@@ -36,14 +39,14 @@ public class Utilidades {
     try {
 
       final MessageDigest md = MessageDigest.getInstance("MD5");
-      final byte[] digestOfPassword = md.digest(secretKey.getBytes("utf-8"));
+      final byte[] digestOfPassword = md.digest(secretKey.getBytes(UTF8));
       final byte[] keyBytes = Arrays.copyOf(digestOfPassword, 24);
 
-      final SecretKey key = new SecretKeySpec(keyBytes, "DESede");
-      final Cipher cipher = Cipher.getInstance("DESede");
+      final SecretKey key = new SecretKeySpec(keyBytes, DESEDE);
+      final Cipher cipher = Cipher.getInstance(DESEDE);
       cipher.init(Cipher.ENCRYPT_MODE, key);
 
-      final byte[] plainTextBytes = texto.getBytes("utf-8");
+      final byte[] plainTextBytes = texto.getBytes(UTF8);
       final byte[] buf = cipher.doFinal(plainTextBytes);
       final byte[] base64Bytes = Base64.encodeBase64(buf);
       base64EncryptedString = new String(base64Bytes);
@@ -65,13 +68,13 @@ public class Utilidades {
     String base64EncryptedString = "";
 
     try {
-      final byte[] message = Base64.decodeBase64(textoEncriptado.getBytes("utf-8"));
+      final byte[] message = Base64.decodeBase64(textoEncriptado.getBytes(UTF8));
       final MessageDigest md = MessageDigest.getInstance("MD5");
-      final byte[] digestOfPassword = md.digest(secretKey.getBytes("utf-8"));
+      final byte[] digestOfPassword = md.digest(secretKey.getBytes(UTF8));
       final byte[] keyBytes = Arrays.copyOf(digestOfPassword, 24);
-      final SecretKey key = new SecretKeySpec(keyBytes, "DESede");
+      final SecretKey key = new SecretKeySpec(keyBytes, DESEDE);
 
-      final Cipher decipher = Cipher.getInstance("DESede");
+      final Cipher decipher = Cipher.getInstance(DESEDE);
       decipher.init(Cipher.DECRYPT_MODE, key);
 
       final byte[] plainText = decipher.doFinal(message);
@@ -148,15 +151,13 @@ public class Utilidades {
   public static List<Usuario> desencriptarListaUsuarios(final Optional<List<Usuario>> users) {
 
     final List<Usuario> usersDesencriptado = new ArrayList<Usuario>();
-    System.out.println("Tamaño de la lista normal: " + users.get().size());
+    System.out.println(TAMAÑO + users.get().size());
 
     for (int i = 0; i < users.get().size(); i++) {
       final Usuario usuario = users.get().get(i);
       System.out.println(usuario.toString());
-      // aun no desencripta porque no coinciden los valores que hay en la BBDD
       usersDesencriptado.add(desencriptarUsuario(usuario));
 
-      // usersDesencriptado.add(usuario);
     }
 
     return usersDesencriptado;
@@ -170,15 +171,13 @@ public class Utilidades {
   public static List<Usuario> desencriptarUsuarios(final List<Usuario> users) {
 
     final List<Usuario> usersDesencriptado = new ArrayList<Usuario>();
-    System.out.println("Tamaño de la lista normal: " + users.size());
+    System.out.println(TAMAÑO + users.size());
 
     for (int i = 0; i < users.size(); i++) {
       final Usuario usuario = users.get(i);
       System.out.println(usuario.toString());
-      // aun no desencripta porque no coinciden los valores que hay en la BBDD
       usersDesencriptado.add(desencriptarUsuario(usuario));
 
-      // usersDesencriptado.add(usuario);
     }
 
     return usersDesencriptado;
@@ -232,21 +231,6 @@ public class Utilidades {
     for (Cita citasDesencriptadas : citas) {
       citasDesencriptado.add(desencriptarCita(citasDesencriptadas));
     }
-
-    /*
-     * final List<Cita> citasDesencriptado = new ArrayList<Cita>();
-     * System.out.println("Tamaño de la lista normal: " + citas.size());
-     * 
-     * for (int i = 0; i < citas.size(); i++) { final Cita cita = citas.get(i);
-     * System.out.println(cita.toString()); // aun no desencripta porque no
-     * coinciden los valores que hay en la BBDD
-     * citasDesencriptado.add(desencriptarCita(cita));
-     * System.out.println(citasDesencriptado.get(i).toString());
-     * 
-     * // citasDesencriptado.add(usuario); }
-     * 
-     * return citasDesencriptado;
-     */
     return citasDesencriptado;
   }
 
@@ -298,7 +282,7 @@ public class Utilidades {
 
   public static List<Especialidad> desencriptarListaEspecialidades(Optional<List<Especialidad>> especialidades) {
     final List<Especialidad> especialidadesDesencriptado = new ArrayList<Especialidad>();
-    System.out.println("Tamaño de la lista normal: " + especialidades.get().size());
+    System.out.println(TAMAÑO + especialidades.get().size());
 
     for (int i = 0; i < especialidades.get().size(); i++) {
       final Especialidad especialidad = especialidades.get().get(i);

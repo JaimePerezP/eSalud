@@ -40,6 +40,7 @@ public class CitasRepositoryImpl implements CitasRepository {
    * 
    * @author e3corp
    */
+  private static final String MEDICO = "medico";	
   @Autowired
   public CitasRepositoryImpl(MongoOperations mongoOperations) {
     Assert.notNull(mongoOperations, "notNull");
@@ -53,8 +54,7 @@ public class CitasRepositoryImpl implements CitasRepository {
    */
   public Optional<List<Cita>> findAll() {
     final List<Cita> citas = this.mongoOperations.find(new Query(), Cita.class);
-    final Optional<List<Cita>> optionalCitas = Optional.ofNullable(citas);
-    return optionalCitas;
+    return Optional.ofNullable(citas);
   }
 
   /**
@@ -93,8 +93,7 @@ public class CitasRepositoryImpl implements CitasRepository {
   public Optional<Cita> findOne(String id) {
     final Cita c = this.mongoOperations.findOne(new Query(Criteria.where("id").is(id)), Cita.class);
     final Optional<Cita> cita = Optional.ofNullable(c);
-    final Optional<Cita> citaDesencriptada = Utilidades.desencriptarOptionalCita(cita);
-    return citaDesencriptada;
+    return Utilidades.desencriptarOptionalCita(cita);
   }
 
   /**
@@ -105,7 +104,7 @@ public class CitasRepositoryImpl implements CitasRepository {
   public Cita findByPacienteMedicoFechaHora(final String idPaciente, final String idMedico, final String fecha,
       final String hora) {
 
-    final Cita cita = this.mongoOperations.findOne(new Query(Criteria.where("paciente").is(idPaciente).and("medico")
+    final Cita cita = this.mongoOperations.findOne(new Query(Criteria.where("paciente").is(idPaciente).and(MEDICO)
         .is(idMedico).and("fecha").is(fecha).and("hora").is(hora)), Cita.class);
 
     final Cita citaDesencriptada = Utilidades.desencriptarCita(cita);
@@ -125,7 +124,7 @@ public class CitasRepositoryImpl implements CitasRepository {
   @Override
   public List<Cita> findMedico(final String id) throws ParseException {
     final String medicoEncriptado = Utilidades.encriptar(id);
-    final List<Cita> citas = this.mongoOperations.find(new Query(Criteria.where("medico").is(medicoEncriptado)),
+    final List<Cita> citas = this.mongoOperations.find(new Query(Criteria.where(MEDICO).is(medicoEncriptado)),
         Cita.class);
     System.out.println("TAMAÑO DE CITAS ENCONTRADAS " + citas.size());
     System.out.println("PACIENTE CON LA CITA ENCONTRADA " + citas.get(citas.size() - 1).getPaciente());
@@ -157,7 +156,7 @@ public class CitasRepositoryImpl implements CitasRepository {
     final Especialidad especialidad = this.mongoOperations
         .findOne(new Query(Criteria.where("especialidad").is(usuario.getEspecialidad())), Especialidad.class);
     final List<Cita> citas = this.mongoOperations
-        .find(new Query(Criteria.where("fecha").is(diaEncriptado).and("medico").is(idmedicoEncriptado)), Cita.class);
+        .find(new Query(Criteria.where("fecha").is(diaEncriptado).and(MEDICO).is(idmedicoEncriptado)), Cita.class);
     final Especialidad especialidadDesencriptadas = Utilidades.desencriptarEspecialidad(especialidad);
     final List<Cita> citasDisponibles = new ArrayList<>();
     final List<Cita> citasTotalesDia = new ArrayList<>();

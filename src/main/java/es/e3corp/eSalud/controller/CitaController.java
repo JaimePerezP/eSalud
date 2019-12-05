@@ -35,6 +35,8 @@ import es.e3corp.eSalud.utilidades.Utilidades;
  * @author e3corp
  */
 public class CitaController {
+  private static final String PACIENTE = "paciente";
+  private static final String MEDICO = "medico";
   /**
    * Campo LOG.
    * 
@@ -141,8 +143,8 @@ public class CitaController {
         LOG.info("[SERVER] Actualizando cita...");
 
         // Depende de los campos que queramos que puedan actualizarse
-        final String paciente = jso.getString("paciente");
-        final String medico = jso.getString("medico");
+        final String paciente = jso.getString(PACIENTE);
+        final String medico = jso.getString(MEDICO);
 
         final String fecha = jso.getString("fecha");
         final String hora = jso.getString("hora");
@@ -159,11 +161,11 @@ public class CitaController {
         try {
           final Usuario usuarioPaciente = usuarioService.findByUserDni(pacienteEncriptado);
           final Usuario usuarioMedico = usuarioService.findByUserDni(medicoEncriptado);
-          if (!usuarioPaciente.getRol().equals("paciente")) {
+          if (!usuarioPaciente.getRol().equals(PACIENTE)) {
             LOG.error("[SERVER] El usuario paciente no es válido.");
             return ResponseEntity.badRequest().build();
           }
-          if (!usuarioMedico.getRol().equals("medico")) {
+          if (!usuarioMedico.getRol().equals(MEDICO)) {
             LOG.error("[SERVER] El usuario medico no es válido.");
             return ResponseEntity.badRequest().build();
           }
@@ -245,8 +247,8 @@ public class CitaController {
   @RequestMapping(method = RequestMethod.POST)
   public ResponseEntity<Cita> registrarCita(@RequestBody String cita) {
     final JSONObject jso = new JSONObject(cita);
-    final String paciente = jso.getString("paciente");
-    final String medico = jso.getString("medico");
+    final String paciente = jso.getString(PACIENTE);
+    final String medico = jso.getString(MEDICO);
     final String fecha = jso.getString("fecha");
     final String hora = jso.getString("hora");
     final String tipo = jso.getString("tipo");
@@ -256,57 +258,5 @@ public class CitaController {
     citasService.saveCita(citaFinal);
     System.out.println("CITA CREADA: " + citaFinal);
     return ResponseEntity.ok(citaFinal);
-    /*
-     * try { final Usuario usuarioPaciente =
-     * usuarioService.findByUserDni(pacienteEncriptado); final Usuario usuarioMedico
-     * = usuarioService.findByUserDni(medicoEncriptado); if
-     * (!usuarioPaciente.getRol().equals("paciente") &&
-     * !usuarioPaciente.getRol().equals("medico")) {
-     * LOG.error("[SERVER] El usuario paciente no es válido."); return
-     * ResponseEntity.badRequest().build(); } if
-     * (!usuarioMedico.getRol().equals("medico")) {
-     * LOG.error("[SERVER] El usuario medico no es válido."); return
-     * ResponseEntity.badRequest().build(); }
-     * 
-     * } catch (UserNotFoundException u) {
-     * LOG.error("[SERVER] El usuario paciente o medico no se ha encontrado.");
-     * return ResponseEntity.badRequest().build(); }
-     * 
-     * if (cita1 == null) { String tipo = null; String centro = null; String
-     * tipoEncriptado = null; String centroEncriptado = null;
-     * 
-     * try { Usuario usuarioPaciente =
-     * usuarioService.findByUserDni(pacienteEncriptado); Usuario usuarioMedico =
-     * usuarioService.findByUserDni(medicoEncriptado); if
-     * (!usuarioPaciente.getRol().equals("paciente") &&
-     * !usuarioPaciente.getRol().equals("medico")) {
-     * LOG.error("[SERVER] El usuario paciente no es válido."); return
-     * ResponseEntity.badRequest().build(); } if
-     * (!usuarioMedico.getRol().equals("medico")) {
-     * LOG.error("[SERVER] El usuario medico no es válido."); return
-     * ResponseEntity.badRequest().build(); }
-     * 
-     * } catch (UserNotFoundException u) {
-     * LOG.error("[SERVER] El usuario paciente o medico no se ha encontrado.");
-     * return ResponseEntity.badRequest().build(); }
-     * 
-     * try { LOG.info("[SERVER] Registrando cita...");
-     * 
-     * tipo = jso.getString("tipo"); centro = jso.getString("centro");
-     * 
-     * tipoEncriptado = Utilidades.encriptar(tipo); centroEncriptado =
-     * Utilidades.encriptar(centro);
-     * 
-     * } catch (JSONException j) {
-     * LOG.info("[SERVER] Error en la lectura del JSON."); LOG.info(j.getMessage());
-     * return ResponseEntity.badRequest().build(); }
-     * 
-     * cita1 = new Cita(paciente, tipo, fecha, centro, medico, hora);
-     * LOG.info("[SERVER] Cita registrada."); LOG.info("[SERVER] " +
-     * cita1.toString()); return ResponseEntity.ok().build(); } else {
-     * LOG.info("[SERVER] Error: la cita ya está registrada."); return
-     * ResponseEntity.badRequest().build(); } }
-     */
-
   }
 }

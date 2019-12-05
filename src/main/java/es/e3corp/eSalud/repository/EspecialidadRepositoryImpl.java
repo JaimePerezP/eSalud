@@ -46,8 +46,7 @@ public class EspecialidadRepositoryImpl implements EspecialidadRepository {
   @Override
   public Optional<List<Especialidad>> findAll() {
     List<Especialidad> especialidades = this.mongoOperations.find(new Query(), Especialidad.class);
-    Optional<List<Especialidad>> optionalEspecialidad = Optional.ofNullable(especialidades);
-    return optionalEspecialidad;
+    return Optional.ofNullable(especialidades);
   }
 
   /**
@@ -92,8 +91,7 @@ public class EspecialidadRepositoryImpl implements EspecialidadRepository {
   public Optional<Especialidad> findOne(String nombre) {
     Especialidad e = this.mongoOperations.findOne(new Query(Criteria.where("especialidad").is(nombre)),
         Especialidad.class);
-    Optional<Especialidad> especialidad = Optional.ofNullable(e);
-    return especialidad;
+    return Optional.ofNullable(e);
   }
 
 }

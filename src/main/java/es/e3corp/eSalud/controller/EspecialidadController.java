@@ -30,6 +30,7 @@ import es.e3corp.eSalud.utilidades.Utilidades;
  * @author e3corp
  */
 public class EspecialidadController {
+  private static final String SERVER = "[SERVER] ";	
   /**
    * Campo LOG.
    * 
@@ -129,11 +130,11 @@ public class EspecialidadController {
       especialidad1 = new Especialidad(nombreEncriptado, horaInicio, horaFin, tiempoConsulta);
       especialidadService.saveEspecialidad(especialidad1);
       LOG.info("[SERVER] Especialidad registrada.");
-      LOG.info("[SERVER] " + especialidad1.toString());
+      LOG.info(SERVER + especialidad1.toString());
       return ResponseEntity.ok().build();
     } else {
       LOG.info("[SERVER] Error: La especialidad ya está registrada.");
-      LOG.info("[SERVER] " + especialidad1.toString());
+      LOG.info(SERVER + especialidad1.toString());
       return ResponseEntity.badRequest().build();
     }
   }
@@ -173,7 +174,7 @@ public class EspecialidadController {
 
       especialidadService.updateEspecialidad(especialidad);
       LOG.info("[SERVER] Especialidad actualizada.");
-      LOG.info("[SERVER] " + especialidad.toString());
+      LOG.info(SERVER + especialidad.toString());
       return ResponseEntity.ok().build();
     }
   }

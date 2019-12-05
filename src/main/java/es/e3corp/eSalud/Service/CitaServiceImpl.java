@@ -110,27 +110,22 @@ public class CitaServiceImpl implements CitaService {
     LOG.info("[SERVER] Id medico recibido: " + idMedico);
     LOG.info("[SERVER] Fecha recibida: " + fecha);
     LOG.info("[SERVER] Hora recibida: " + hora);
-    Cita cita = citaRepository.findByPacienteMedicoFechaHora(idPaciente, idMedico, fecha, hora);
-    return cita;
+    return citaRepository.findByPacienteMedicoFechaHora(idPaciente, idMedico, fecha, hora);
   }
 
   @Override
   public List<Cita> getCitasByPaciente(String dni) {
-    List<Cita> citas = citaRepository.findPaciente(dni);
-    return citas;
+    return citaRepository.findPaciente(dni);
   }
 
   @Override
   public List<Cita> getCitasByMedico(String id) throws ParseException {
-
-    List<Cita> citas = citaRepository.findMedico(id);
-    return citas;
+    return citaRepository.findMedico(id);
   }
 
   @Override
   public List<Cita> getCitasDisponibles(String idmedico, String dia) {
-    List<Cita> citas = citaRepository.getCitasDisponibles(idmedico, dia);
-    return citas;
+    return citaRepository.getCitasDisponibles(idmedico, dia);
   }
 
 }

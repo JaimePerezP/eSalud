@@ -49,9 +49,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 
     List<Usuario> users = this.mongoOperations.find(new Query(), Usuario.class);
 
-    Optional<List<Usuario>> optionalUsuarios = Optional.ofNullable(users);
-
-    return optionalUsuarios;
+    return Optional.ofNullable(users);
 
   }
 
@@ -63,8 +61,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
   public Optional<Usuario> findOne(final String dni) {
     System.out.println("el usuario buscado encriptado es: " + dni);
     Usuario d = this.mongoOperations.findOne(new Query(Criteria.where("dni").is(dni)), Usuario.class);
-    Optional<Usuario> usuario = Optional.ofNullable(d);
-    return usuario;
+    return Optional.ofNullable(d);
   }
 
   /**
@@ -100,15 +97,13 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 
   @Override
   public Usuario findByDniAndContrasena(final String dni, final String contrasena) {
-    Usuario usuario = this.mongoOperations
-        .findOne(new Query(Criteria.where("dni").is(dni).and("contrasena").is(contrasena)), Usuario.class);
-    return usuario;
+    return this.mongoOperations
+            .findOne(new Query(Criteria.where("dni").is(dni).and("contrasena").is(contrasena)), Usuario.class);
   }
 
   @Override
   public List<Usuario> findByRol(final String rol) {
-    List<Usuario> usuariosRol = this.mongoOperations.find(new Query(Criteria.where("rol").is(rol)), Usuario.class);
-    return usuariosRol;
+    return this.mongoOperations.find(new Query(Criteria.where("rol").is(rol)), Usuario.class);
   }
 
 }

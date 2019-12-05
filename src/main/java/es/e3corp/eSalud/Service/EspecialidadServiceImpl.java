@@ -39,9 +39,7 @@ public class EspecialidadServiceImpl implements EspecialidadService {
   @Override
   public List<Especialidad> findAll() {
     final Optional<List<Especialidad>> especialidades = especialidadRepository.findAll();
-    final List<Especialidad> especialidadesDesencriptado = Utilidades.desencriptarListaEspecialidades(especialidades);
-
-    return especialidadesDesencriptado;
+    return Utilidades.desencriptarListaEspecialidades(especialidades);
   }
 
   @Override

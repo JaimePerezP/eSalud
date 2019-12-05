@@ -71,9 +71,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     final Optional<List<Usuario>> users = userRepository.findAll();
 
-    final List<Usuario> usersDesencrip = Utilidades.desencriptarListaUsuarios(users);
-
-    return usersDesencrip;
+    return Utilidades.desencriptarListaUsuarios(users);
 
   }
 
@@ -106,17 +104,12 @@ public class UsuarioServiceImpl implements UsuarioService {
 
   @Override
   public Usuario getUserByDniAndPassword(final String dni, final String password) {
-    // System.out.println("[SERVER] DNI recibido: " + dni);
-    // System.out.println("[SERVER] Contraseña recibida: " + password);
-
     final Usuario usuario = userRepository.findByDniAndContrasena(dni, password);
-    final Usuario usuarioDesencriptado = Utilidades.desencriptarUsuario(usuario);
-    return usuarioDesencriptado;
+    return Utilidades.desencriptarUsuario(usuario);
   }
 
   @Override
   public List<Usuario> getUsersByRol(final String rol) {
-    // Faltaria implementar un desencriptado despues
     final List<Usuario> usersRol = userRepository.findByRol(rol);
     final List<Usuario> usuariosRolDesenc = Utilidades.desencriptarUsuarios(usersRol);
     return usersRol;

@@ -35,7 +35,12 @@ public class UsuarioController {
   private static final Log LOG = LogFactory.getLog(UsuarioController.class);
 
   private final UsuarioService usersService;
-
+  
+  private static final String GETALLUSERS = "Get allUsers";
+  private static final String PACIENTE = "paciente";
+  private static final String MEDICO = "medico";
+  private static final String CENTRO = "centro";
+  private static final String SERVER = "[SERVER] ";
   @Autowired
   /**
    * @author e3corp
@@ -80,9 +85,7 @@ public class UsuarioController {
     LOG.info("[SERVER] Buscando usuario: " + userDni);
     Usuario user;
     try {
-      // System.out.println("Se recibe el dni: " +userDni);
       final String dniEncriptado = Utilidades.encriptar(userDni);
-      // System.out.println("Se recibe el dni encriptado: " +dniEncriptado);
       user = usersService.findByUserDni(dniEncriptado);
       LOG.info("[SERVER] Usuario encontrado.");
     } catch (UserNotFoundException e) {
@@ -92,16 +95,11 @@ public class UsuarioController {
     return ResponseEntity.ok(user);
   }
 
-  /*
-   * @RequestMapping(method = RequestMethod.GET) public
-   * ResponseEntity<List<Usuario>> usuarioById() { log.info("Get allUsers");
-   * return ResponseEntity.ok(usersService.findAll()); }
-   */
   @RequestMapping(value = "/all", method = RequestMethod.GET)
   @ApiOperation(value = "Find all user", notes = "Return all users")
 
   public ResponseEntity<List<Usuario>> allUsers() {
-    LOG.info("Get allUsers");
+    LOG.info(GETALLUSERS);
     return ResponseEntity.ok(usersService.findAll());
   }
 
@@ -109,8 +107,8 @@ public class UsuarioController {
   @ApiOperation(value = "Find all user", notes = "Return all users")
 
   public ResponseEntity<List<Usuario>> allPacientes() {
-    LOG.info("Get allUsers");
-    return ResponseEntity.ok(usersService.getUsersByRol(Utilidades.encriptar("paciente")));
+    LOG.info(GETALLUSERS);
+    return ResponseEntity.ok(usersService.getUsersByRol(Utilidades.encriptar(PACIENTE)));
   }
 
   /**
@@ -122,8 +120,8 @@ public class UsuarioController {
   @ApiOperation(value = "Find all user", notes = "Return all users")
 
   public ResponseEntity<List<Usuario>> allMedicos() {
-    LOG.info("Get allUsers");
-    return ResponseEntity.ok(usersService.getUsersByRol(Utilidades.encriptar("medico")));
+    LOG.info(GETALLUSERS);
+    return ResponseEntity.ok(usersService.getUsersByRol(Utilidades.encriptar(MEDICO)));
   }
 
   /**
@@ -151,11 +149,7 @@ public class UsuarioController {
     final JSONObject jso = new JSONObject(usuario);
     final String dni = jso.getString("dni");
     final String contrasena = jso.getString("password");
-
-    // System.out.println("Se recibe el dni: " +dni);
     final String dniEncriptado = Utilidades.encriptar(dni);
-    // System.out.println("Se recibe el dni encriptado: " +dniEncriptado);
-
     final String contrasenaEncrip = Utilidades.encriptar(contrasena);
 
     Usuario usuario1 = usersService.getUserByDniAndPassword(dniEncriptado, contrasenaEncrip);
@@ -175,14 +169,14 @@ public class UsuarioController {
         apellidos = jso.getString("apellidos");
         numTelefono = jso.getString("tel");
         email = jso.getString("correo");
-        if (jso.getString("rol").equals("paciente")) {
+        if (jso.getString("rol").equals(PACIENTE)) {
           localidad = jso.getString("localidad");
           rol = jso.getString("rol");
-          centro = jso.getString("centro");
+          centro = jso.getString(CENTRO);
         } else {
           rol = jso.getString("rol");
-          centro = jso.getString("centro");
-          medico = jso.getString("medico");
+          centro = jso.getString(CENTRO);
+          medico = jso.getString(MEDICO);
           especialidad = jso.getString("especialidad");
         }
       } catch (JSONException j) {
@@ -195,11 +189,11 @@ public class UsuarioController {
           centro, email);
       usersService.saveUsuario(usuario1);
       LOG.info("[SERVER] Usuario registrado.");
-      LOG.info("[SERVER] " + usuario1.toString());
+      LOG.info(SERVER + usuario1.toString());
       return ResponseEntity.ok().build();
     } else {
       LOG.info("[SERVER] Error: El usuario ya está registrado.");
-      LOG.info("[SERVER] " + usuario1.toString());
+      LOG.info(SERVER + usuario1.toString());
       return ResponseEntity.badRequest().build();
     }
   }
@@ -223,18 +217,18 @@ public class UsuarioController {
         final String nombre = jso.getString("nombre");
         final String apellidos = jso.getString("apellidos");
         final String numTelefono = jso.getString("numTelefono");
-        final String centro = jso.getString("centro");
+        final String centro = jso.getString(CENTRO);
         final String email = jso.getString("email");
         final String rol = jso.getString("rol");
         final String contrasena = jso.getString("contrasena");
 
-        if (rol.equals("medico")) {
+        if (rol.equals(MEDICO)) {
           final String especialidad = jso.getString("especialidad");
           final String especialidadEncriptado = Utilidades.encriptar(especialidad);
           usuario.setEspecialidad(especialidadEncriptado);
         }
 
-        if (rol.equals("paciente")) {
+        if (rol.equals(PACIENTE)) {
           final String localidad = jso.getString("localidad");
           final String localidadEncriptado = Utilidades.encriptar(localidad);
           usuario.setLocalidad(localidadEncriptado);
@@ -265,7 +259,7 @@ public class UsuarioController {
 
       usersService.updateUsuario(usuario);
       LOG.info("[SERVER] Usuario actualizada.");
-      LOG.info("[SERVER] " + usuario.toString());
+      LOG.info(SERVER + usuario.toString());
       return ResponseEntity.ok().build();
     }
   }
