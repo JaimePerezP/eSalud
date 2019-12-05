@@ -9,7 +9,6 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import es.e3corp.eSalud.model.Usuario;
 import es.e3corp.eSalud.repository.UsuarioRepository;
@@ -17,7 +16,6 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 public class Registro_Usuarios_GestorSteps {
 
 	List<Map<String, String>> tabla;
@@ -80,7 +78,7 @@ public class Registro_Usuarios_GestorSteps {
 		tabla = dataTable.asMaps(String.class, String.class);
 		if (tabla.get(0).get("resultadoEsperado").equals("REGISTRO MEDICO OK")) {
 			driver.get("http://localhost:8080/admin/RegistrarMedico");
-		} else if (tabla.get(0).get("resultadoEsperado").contentEquals("REGISTRO PACIENTE OK")) {
+		} else if (tabla.get(0).get("resultadoEsperado").equals("REGISTRO PACIENTE OK")) {
 
 		} else if (tabla.get(0).get("resultadoEsperado").equals("REGISTRO ADMIN OK")) {
 

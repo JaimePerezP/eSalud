@@ -33,9 +33,9 @@ Feature: Cambiar de la ventana de gestor a paciente y de paciente a gestor solo 
 	
 	Examples: 
   	|testCase	| resultadoEsperado 	 |	 dni	  | nombre	  	| apellidos      | pwd 					| numTelefono    | email             |  localidad   | rol      | especialidad   | 
-    |CASO 1		| Medico    				 	 | 00000001	| Prueba      | Prueba Bien    | Prueba-12345	| 645612514      | prueba@prueba.com |	Ciudad real	| Médico   | Podólogo       |
-    |CASO 2		| Gestor	             | 00000002	| Prueba      | Prueba Mal     | pru					| 645612514      | prueba@prueba.com |	Ciudad real	| Admin    |                |
-    |CASO 3		| Paciente   				 	 | 00000003	| Prueba      | Prueba Bien    | Prueba-12345	| 645612514      | prueba@prueba.com |	Ciudad real	| Paciente |                |
+    |CASO 1		| Medico    				 	 | 00000001	| Prueba      | Prueba Bien    | Prueba-12345	| 645612514      | prueba@prueba.com |	Ciudad real	| medico   | Podólogo       |
+    |CASO 2		| Gestor	             | 00000002	| Prueba      | Prueba Mal     | pru					| 645612514      | prueba@prueba.com |	Ciudad real	| admin    |                |
+    |CASO 3		| Paciente   				 	 | 00000003	| Prueba      | Prueba Bien    | Prueba-12345	| 645612514      | prueba@prueba.com |	Ciudad real	| paciente |                |
 		
 	
 
