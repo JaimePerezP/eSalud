@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://esalud-e4.herokuapp.com/',
+  apiUrl: 'https://esalud-e4.herokuapp.com',
 };
 
 /*
