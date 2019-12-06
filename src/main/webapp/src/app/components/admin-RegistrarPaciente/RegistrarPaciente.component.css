@@ -1,0 +1,190 @@
+.register {
+    width: 100%;
+    margin: 0px;
+    font-size: 16px;
+}
+
+
+/* Reset top and bottom margins from certain elements */
+
+.register-header {
+    margin-top: 0;
+    margin-bottom: 0;
+	border-top: solid black 1px;
+	border-right: solid black 1px;
+	border-left: solid black 1px;
+}
+
+
+/* The triangle form is achieved by a CSS hack */
+
+
+.register-header {
+    background: #23C185;
+    padding: 20px;
+    font-size: 1.4em;
+    font-weight: normal;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.register-container {
+    background: #ebebeb;
+    padding: 10 px;
+    display: grid;
+
+}
+
+
+/* Every row inside .register-container is defined with p tags */
+
+.register p {
+    padding: 6px;
+}
+
+.register input {
+    box-sizing: border-box;
+    padding: 6px;
+    display: block;
+    width: 100%;
+    border-width: 1px;
+    border-style: solid;
+    padding: 5%;
+    outline: 0;
+    font-family: inherit;
+    font-size: 0.95em;
+}
+
+.register input[type="text"],
+.register input[type="password"]{
+    width: 100%;
+    background: #fff;
+    border-color: #bbb;
+    color: #555;
+    margin-top: 5px;
+}
+
+
+/* Text fields' focus effect */
+
+.register input[type="text"]:focus,
+.register input[type="password"]:focus{
+    border-color: #888;
+}
+
+.register input[type="submit"] {
+    background: #23C185;
+    border-color: transparent;
+    color: #fff;
+    cursor: pointer;
+    left: 50%;
+}
+
+.register input[type="submit"]:hover {
+    background: rgb(6, 117, 75);
+}
+
+
+/* Buttons' focus effect */
+
+.register input[type="submit"]:focus {
+    border-color: rgb(6, 117, 75);
+}.ng-valid {
+    border: thin solid #090;
+}
+
+.ng-invalid {
+    border: thin solid #990000;
+}
+
+
+input[type=text],input[type=password],input[class=form-control] select, textarea{
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+.container {
+  border-radius: 4px;
+  background-color: #f2f2f2;
+  padding-left: 5%;
+  padding-top: 1%;
+  padding-right: 5%;
+  padding-bottom: 5%;
+  
+}
+
+/* Floating column for labels: 25% width */
+.col-25 {
+  float: left;
+  padding-top: 1%;
+  padding-left: 25%;
+  width: 20%;
+  margin-top: 6px;
+}
+
+.col-25u {
+  float: left;
+  padding-top: 1%;
+  padding-left: 10%;
+  width: 20%;
+  margin-top: 6px;
+  padding-bottom:1%
+}
+
+/* Floating column for inputs: 75% width */
+.col-75 {
+  float: left;
+  width: 60%;
+ padding-top: 1%;
+  padding-left: 20%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) { 
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+
+.row1 {
+  background-color: rgb(0, 128, 64) ;
+  border: 2px solid #ccc;
+  text-align: right;
+}
+
+.row justify-content-center {
+  padding-top: 140%;
+  
+}
+.button1{
+	width:200px;
+}

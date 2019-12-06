@@ -16,7 +16,9 @@ export class SidenavAdminComponent implements OnInit {
   fillerNav = [
     { name: "Lista de médicos", route: "ModificarMedico", icon: "list" },
     { name: "Lista de pacientes", route: "ModificarPaciente", icon: "edit" },
+    { name: "Registrar administradores", route: "RegistrarAdmin", icon: "autorenew" },
     { name: "Registrar médicos", route: "RegistrarMedico", icon: "autorenew" },
+    { name: "Registrar pacientes", route: "RegistrarPaciente", icon: "autorenew" },
     { name: "Filtrar personal médico", route: "MostrarPersonalMedico", icon: "edit" },
     { name: "Gestión de especialidades", route: "MostrarEspecialidades", icon: "edit" },
     { name: "Registrar especialidad", route: "RegistrarEspecialidad", icon: "autorenew" },

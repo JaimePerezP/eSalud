@@ -1,0 +1,89 @@
+<div class="register">
+    <h2 class="register-header">Registro administradores</h2>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-container">
+        <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-25">
+                    <label for="fname">Dni</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" placeholder="DNI" formControlName="dni" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dni.errors }">
+                    <div *ngIf="submitted && f.dni.errors" class="invalid-feedback">
+                        <div *ngIf="f.dni.errors.required">Escribe un Dni</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="fname">Nombre</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" placeholder="Nombre" formControlName="nombre" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nombre.errors }" />
+                    <div *ngIf="submitted && f.nombre.errors" class="invalid-feedback">
+                        <div *ngIf="f.nombre.errors.required">Escribe un nombre</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="fname">Apellidos</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" placeholder="Apellidos" formControlName="apellidos" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.apellidos.errors }" />
+                    <div *ngIf="submitted && f.apellidos.errors" class="invalid-feedback">
+                        <div *ngIf="f.apellidos.errors.required">Escribe unos apellidos</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="fname">Contraseña</label>
+                </div>
+                <div class="col-75">
+                    <input type="password" placeholder="Contraseña" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="f.password.errors.required">Escriba una contraseña</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="fname">Centro</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" placeholder="Centro" formControlName="centro" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.centro.errors }" />
+                    <div *ngIf="submitted && f.centro.errors" class="invalid-feedback">
+                        <div *ngIf="f.centro.errors.required">Escriba un centro</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="fname">Telefono</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" placeholder="Telefono" formControlName="tel" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.tel.errors }">
+                    <div *ngIf="submitted && f.tel.errors" class="invalid-feedback">
+                        <div *ngIf="f.tel.errors.required">Escriba un telefono</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="fname">Correo electrónico</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" placeholder="Correo electrónico" formControlName="correo" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.correo.errors }" />
+                    <div *ngIf="submitted && f.correo.errors" class="invalid-feedback">
+                        <div *ngIf="f.correo.errors.required">Escriba un correo electrónico</div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="row justify-content-center">
+            <p><input type="submit" value="Registrarse" class="button2"></p>
+            <p><input type="submit" value="Cancelar" class="button1"></p>
+        </div>
+    </form>

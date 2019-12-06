@@ -15,7 +15,9 @@ import { ListadoCitasComponent } from './components/listado-citas/listado-citas.
 import { ModificarMedicoComponent } from './components/admin-ModificarMedico/ModificarMedico.component';
 import { ModificarPacienteComponent } from './components/admin-ModificarPaciente/ModificarPaciente.component';
 import { RegistrarEspecialidadComponent } from './components/admin-RegistrarEspecialidad/RegistrarEspecialidad.component';
+import { RegistrarAdminComponent } from './components/admin-RegistrarAdmin/RegistrarAdmin.component';
 import { RegistrarMedicoComponent } from './components/admin-RegistrarMedico/RegistrarMedico.component';
+import { RegistrarPacienteComponent } from './components/admin-RegistrarPaciente/RegistrarPaciente.component';
 import { DialogBoxPacienteComponent } from './components/dialog-box-paciente/dialog-box-paciente.component';
 import { DialogBoxMedicoComponent } from './components/dialog-box-medico/dialog-box-medico.component';
 import { DialogBoxModificarCita} from './components/dialog-box-modificarCita/dialog-box-modificarCita.component';
@@ -35,7 +37,9 @@ import { DialogBoxModificarEspecialidadComponent } from './components/dialog-box
     ListadoCitasComponent,
     ModificarMedicoComponent,
     ModificarPacienteComponent,
+    RegistrarAdminComponent,
     RegistrarMedicoComponent,
+    RegistrarPacienteComponent,
     DialogBoxPacienteComponent,
     DialogBoxMedicoComponent,
 	  DialogBoxModificarCita,
