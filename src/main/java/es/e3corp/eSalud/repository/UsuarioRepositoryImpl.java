@@ -59,7 +59,6 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
    * @author e3corp
    */
   public Optional<Usuario> findOne(final String dni) {
-    System.out.println("el usuario buscado encriptado es: " + dni);
     Usuario d = this.mongoOperations.findOne(new Query(Criteria.where("dni").is(dni)), Usuario.class);
     return Optional.ofNullable(d);
   }

@@ -81,7 +81,6 @@ public class CitasRepositoryImpl implements CitasRepository {
    * @author e3corp
    */
   public void deleteCita(String citaId) {
-    System.out.println("ID DE LA CITA QUE LLEGA");
     this.mongoOperations.findAndRemove(new Query(Criteria.where("_id").is(citaId)), Cita.class);
   }
 
@@ -115,9 +114,7 @@ public class CitasRepositoryImpl implements CitasRepository {
   public List<Cita> findPaciente(final String dni) {
     final List<Cita> citas = this.mongoOperations
         .find(new Query(Criteria.where("paciente").is(Utilidades.encriptar(dni))), Cita.class);
-    System.out.println("CITAS ENCONTRADAS: " + citas);
     final List<Cita> citasDesencriptadas = Utilidades.desencriptarListaCitas(citas);
-    System.out.println("CITAS ENCRIIPTADA: " + citasDesencriptadas);
     return citasDesencriptadas;
   }
 
@@ -126,8 +123,6 @@ public class CitasRepositoryImpl implements CitasRepository {
     final String medicoEncriptado = Utilidades.encriptar(id);
     final List<Cita> citas = this.mongoOperations.find(new Query(Criteria.where(MEDICO).is(medicoEncriptado)),
         Cita.class);
-    System.out.println("TAMAÑO DE CITAS ENCONTRADAS " + citas.size());
-    System.out.println("PACIENTE CON LA CITA ENCONTRADA " + citas.get(citas.size() - 1).getPaciente());
 
     final List<Cita> citasDesencriptadas = Utilidades.desencriptarListaCitas(citas);
     final List<Cita> citasNombrePaciente = new ArrayList<>();
@@ -182,7 +177,6 @@ public class CitasRepositoryImpl implements CitasRepository {
     }
     List<Cita> citasFinales = new ArrayList<>();
     citasFinales.addAll(citasDisponibles);
-    System.out.println(Utilidades.desencriptarListaCitas(citasFinales));
 
     return citasFinales;
   }

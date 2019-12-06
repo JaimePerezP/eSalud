@@ -150,12 +150,10 @@ public class Utilidades {
    */
   public static List<Usuario> desencriptarListaUsuarios(final Optional<List<Usuario>> users) {
 
-    final List<Usuario> usersDesencriptado = new ArrayList<Usuario>();
-    System.out.println(TAMAÑO + users.get().size());
+    final List<Usuario> usersDesencriptado = new ArrayList<>();
 
     for (int i = 0; i < users.get().size(); i++) {
       final Usuario usuario = users.get().get(i);
-      System.out.println(usuario.toString());
       usersDesencriptado.add(desencriptarUsuario(usuario));
 
     }
@@ -170,12 +168,10 @@ public class Utilidades {
    */
   public static List<Usuario> desencriptarUsuarios(final List<Usuario> users) {
 
-    final List<Usuario> usersDesencriptado = new ArrayList<Usuario>();
-    System.out.println(TAMAÑO + users.size());
+    final List<Usuario> usersDesencriptado = new ArrayList<>();
 
     for (int i = 0; i < users.size(); i++) {
       final Usuario usuario = users.get(i);
-      System.out.println(usuario.toString());
       usersDesencriptado.add(desencriptarUsuario(usuario));
 
     }
@@ -227,7 +223,7 @@ public class Utilidades {
    * @author e3corp
    */
   public static List<Cita> desencriptarListaCitas(final List<Cita> citas) {
-    final List<Cita> citasDesencriptado = new ArrayList<Cita>();
+    final List<Cita> citasDesencriptado = new ArrayList<>();
     for (Cita citasDesencriptadas : citas) {
       citasDesencriptado.add(desencriptarCita(citasDesencriptadas));
     }
@@ -281,12 +277,10 @@ public class Utilidades {
   }
 
   public static List<Especialidad> desencriptarListaEspecialidades(Optional<List<Especialidad>> especialidades) {
-    final List<Especialidad> especialidadesDesencriptado = new ArrayList<Especialidad>();
-    System.out.println(TAMAÑO + especialidades.get().size());
+    final List<Especialidad> especialidadesDesencriptado = new ArrayList<>();
 
     for (int i = 0; i < especialidades.get().size(); i++) {
       final Especialidad especialidad = especialidades.get().get(i);
-      System.out.println(especialidad.toString());
       especialidadesDesencriptado.add(desencriptarEspecialidad(especialidad));
     }
 

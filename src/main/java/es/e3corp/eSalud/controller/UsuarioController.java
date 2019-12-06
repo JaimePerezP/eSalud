@@ -10,7 +10,11 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -55,7 +59,7 @@ public class UsuarioController {
    * @author e3corp
    */
 
-  @RequestMapping(method = RequestMethod.GET)
+  @GetMapping
 
   public ResponseEntity<Usuario> getUserPassword(@RequestParam("dni") final String dni,
       @RequestParam("password") final String password) {
@@ -78,7 +82,7 @@ public class UsuarioController {
    * 
    * @author e3corp
    */
-  @RequestMapping(value = "/{userDni}", method = RequestMethod.GET)
+  @GetMapping(value = "/{userDni}")
   @ApiOperation(value = "Find an user", notes = "Return a user by DNI")
 
   public ResponseEntity<Usuario> userByDni(@PathVariable final String userDni) throws UserNotFoundException {
@@ -95,7 +99,7 @@ public class UsuarioController {
     return ResponseEntity.ok(user);
   }
 
-  @RequestMapping(value = "/all", method = RequestMethod.GET)
+  @GetMapping(value = "/all")
   @ApiOperation(value = "Find all user", notes = "Return all users")
 
   public ResponseEntity<List<Usuario>> allUsers() {
@@ -103,7 +107,7 @@ public class UsuarioController {
     return ResponseEntity.ok(usersService.findAll());
   }
 
-  @RequestMapping(value = "/pacientes", method = RequestMethod.GET)
+  @GetMapping(value = "/pacientes")
   @ApiOperation(value = "Find all user", notes = "Return all users")
 
   public ResponseEntity<List<Usuario>> allPacientes() {
@@ -116,7 +120,7 @@ public class UsuarioController {
    * 
    * @author e3corp
    */
-  @RequestMapping(value = "/medicos", method = RequestMethod.GET)
+  @GetMapping(value = "/medicos")
   @ApiOperation(value = "Find all user", notes = "Return all users")
 
   public ResponseEntity<List<Usuario>> allMedicos() {
@@ -129,7 +133,7 @@ public class UsuarioController {
    * 
    * @author e3corp
    */
-  @RequestMapping(value = "/{userId}", method = RequestMethod.DELETE)
+  @DeleteMapping(value = "/{userId}")
   @ApiOperation(value = "Delete an user", notes = "Delete a user by Id")
 
   public ResponseEntity<Void> deleteUser(@PathVariable final String userId) {
@@ -143,7 +147,7 @@ public class UsuarioController {
    * 
    * @author e3corp.
    */
-  @RequestMapping(method = RequestMethod.POST)
+  @PostMapping
 
   public ResponseEntity<Usuario> registrarUsuario(@RequestBody final String usuario) {
     final JSONObject jso = new JSONObject(usuario);
@@ -198,7 +202,7 @@ public class UsuarioController {
     }
   }
 
-  @RequestMapping(value = "/{userId}", method = RequestMethod.PUT)
+  @PutMapping(value = "/{userId}")
   @ApiOperation(value = "Update usuario", notes = "Finds a cita ID and updates its fields")
   public ResponseEntity<Usuario> updateUsuario(@RequestBody final String mensajerecibido,
       @PathVariable final String userId) {

@@ -9,7 +9,11 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -60,7 +64,7 @@ public class EspecialidadController {
    * @author e3corp
    */
 
-  @RequestMapping(method = RequestMethod.GET)
+  @GetMapping
 
   public ResponseEntity<Especialidad> getEspecialidad(@RequestParam("nombre") final String nombre) {
 
@@ -74,7 +78,7 @@ public class EspecialidadController {
     }
   }
 
-  @RequestMapping(value = "/all", method = RequestMethod.GET)
+  @GetMapping(value = "/all")
   @ApiOperation(value = "Find all specialties", notes = "Return all specialties")
 
   public ResponseEntity<List<Especialidad>> allSpecialties() {
@@ -87,7 +91,7 @@ public class EspecialidadController {
    * 
    * @author e3corp
    */
-  @RequestMapping(value = "/{especialidad}", method = RequestMethod.DELETE)
+  @DeleteMapping(value = "/{especialidad}")
   @ApiOperation(value = "Delete an specialty", notes = "Delete a specialty by especialidad")
 
   public ResponseEntity<Void> deleteEspecialidad(@PathVariable final String especialidad) {
@@ -102,7 +106,7 @@ public class EspecialidadController {
    * 
    * @author e3corp.
    */
-  @RequestMapping(method = RequestMethod.POST)
+  @PostMapping
 
   public ResponseEntity<Usuario> registrarEspecialidad(@RequestBody final String especialidad) {
     final JSONObject jso = new JSONObject(especialidad);
@@ -139,7 +143,7 @@ public class EspecialidadController {
     }
   }
 
-  @RequestMapping(value = "/{especialidadNombre}", method = RequestMethod.PUT)
+  @PutMapping(value = "/{especialidadNombre}")
   @ApiOperation(value = "Update especialidad", notes = "Finds a specialty name and updates its fields")
   public ResponseEntity<Usuario> updateEspecialidad(@RequestBody final String mensajerecibido,
       @PathVariable final String especialidadNombre) {

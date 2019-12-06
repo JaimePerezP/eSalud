@@ -11,7 +11,11 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -73,7 +77,7 @@ public class CitaController {
    * @return
    */
 
-  @RequestMapping(method = RequestMethod.GET)
+  @GetMapping
   public ResponseEntity<Cita> getCitaFecha(@RequestParam(required = false) String paciente,
       @RequestParam(required = false) String medico, @RequestParam(required = false) String fecha,
       @RequestParam(required = false) String hora) {
@@ -86,15 +90,13 @@ public class CitaController {
     Cita cita = citasService.findCitaByPacienteMedicoFechaHora(pacienteEncriptado, medicoEncriptado, fechaEncriptado,
         horaEncriptado);
     if (cita != null) {
-      System.out.println("[SERVER] Cita encontrada: " + cita.getId());
       return ResponseEntity.ok(cita);
     } else {
-      System.out.println("[SERVER] No se ha encontrado ninguna cita.");
       return ResponseEntity.badRequest().build();
     }
   }
 
-  @RequestMapping(value = "paciente/{dni}", method = RequestMethod.GET)
+  @GetMapping(value = "paciente/{dni}")
   /**
    * @author e3corp
    */
@@ -103,7 +105,7 @@ public class CitaController {
     return ResponseEntity.ok(citas);
   }
 
-  @RequestMapping(value = "medico/{id}", method = RequestMethod.GET)
+  @GetMapping(value = "medico/{id}")
   /**
    * @author e3corp
    */
@@ -118,7 +120,7 @@ public class CitaController {
    * 
    * @author e3corp
    */
-  @RequestMapping(value = "/{citaId}", method = RequestMethod.PUT)
+  @PutMapping(value = "/{citaId}")
 
   /**
    * ApiOperation update cita.
@@ -197,7 +199,7 @@ public class CitaController {
   /**
    * RequestMapping /{citaid}. ApiOperation find cita.
    */
-  @RequestMapping(value = "/{citaId}", method = RequestMethod.GET)
+  @GetMapping(value = "/{citaId}")
   @ApiOperation(value = "Find cita", notes = "Return a cita by Id")
   /**
    * Obtiene una cita mediante su id.
@@ -219,7 +221,7 @@ public class CitaController {
   /**
    * RequestMapping {citaid}. ApiOperation delete cita.
    */
-  @RequestMapping(value = "{citaId}", method = RequestMethod.DELETE)
+  @DeleteMapping(value = "{citaId}")
   @ApiOperation(value = "Delete cita", notes = "Delete cita")
   /**
    * Borra una cita mediante su id.
@@ -232,7 +234,7 @@ public class CitaController {
     return ResponseEntity.ok().build();
   }
 
-  @RequestMapping(value = "/disponibilidad", method = RequestMethod.GET)
+  @GetMapping(value = "/disponibilidad")
   public ResponseEntity<List<Cita>> disponibilidadCitasEnUnDia(@RequestParam("idmedico") String idmedico,
       @RequestParam("dia") String dia) {
     List<Cita> citas = this.citasService.getCitasDisponibles(idmedico, dia);
@@ -244,7 +246,7 @@ public class CitaController {
    * 
    * @author e3corp
    */
-  @RequestMapping(method = RequestMethod.POST)
+  @PostMapping
   public ResponseEntity<Cita> registrarCita(@RequestBody String cita) {
     final JSONObject jso = new JSONObject(cita);
     final String paciente = jso.getString(PACIENTE);
@@ -256,7 +258,6 @@ public class CitaController {
     LOG.info("el paciente que se recibe es:" + paciente);
     Cita citaFinal = new Cita("", paciente, tipo, fecha, centro, medico, hora);
     citasService.saveCita(citaFinal);
-    System.out.println("CITA CREADA: " + citaFinal);
     return ResponseEntity.ok(citaFinal);
   }
 }
