@@ -3,10 +3,7 @@ package es.e3corp.eSalud.bdd.stepdefs;
 import java.util.List;
 import java.util.Map;
 
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import es.e3corp.eSalud.model.Usuario;
 import es.e3corp.eSalud.repository.UsuarioRepository;
@@ -14,7 +11,6 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 public class Convertir_Usuario_GestorSteps {
 
 	List<Map<String, String>> tabla;
