@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import es.e3corp.eSalud.exception.UserNotFoundException;
+import es.e3corp.eSalud.model.Cita;
 import es.e3corp.eSalud.model.Usuario;
 import es.e3corp.eSalud.repository.UsuarioRepository;
 import es.e3corp.eSalud.utilidades.Utilidades;
@@ -53,6 +54,10 @@ public class UsuarioServiceImpl implements UsuarioService {
       log.debug(String.format("Read userId '{}'", userDni));
 
       final Optional<Usuario> userDesencriptado = Utilidades.desencriptarOptionalUsuario(user);
+      
+      if (userDesencriptado.isPresent()) {
+      	final Usuario stringValue = userDesencriptado.get();
+      	}
 
       return userDesencriptado.get();
 

@@ -49,7 +49,13 @@ public class CitaServiceImpl implements CitaService {
    * @author e3corp
    */
   public List<Cita> findAll() {
+	  
     Optional<List<Cita>> cita = citaRepository.findAll();
+    
+    if (cita.isPresent()) {
+    	List<Cita> stringValue = cita.get();
+    	}
+    
     return cita.get();
   }
 

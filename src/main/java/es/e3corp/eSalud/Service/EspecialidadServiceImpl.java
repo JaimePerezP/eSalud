@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import es.e3corp.eSalud.model.Cita;
 import es.e3corp.eSalud.model.Especialidad;
 import es.e3corp.eSalud.repository.EspecialidadRepository;
 import es.e3corp.eSalud.utilidades.Utilidades;
@@ -52,6 +53,10 @@ public class EspecialidadServiceImpl implements EspecialidadService {
 
       final Optional<Especialidad> especialidadDesencriptado = Utilidades
           .desencriptarOptionalEspecialidad(especialidad);
+      
+      if (especialidadDesencriptado.isPresent()) {
+    	  final Especialidad stringValue = especialidadDesencriptado.get();
+      	}
 
       return especialidadDesencriptado.get();
 

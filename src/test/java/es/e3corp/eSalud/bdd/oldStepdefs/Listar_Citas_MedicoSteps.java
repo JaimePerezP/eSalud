@@ -47,19 +47,19 @@ public class Listar_Citas_MedicoSteps {
   public void se_muestra_la_lista_de_citas_del_medico(String string) {
     switch (a.get(0).get("testCase")) {
     case "Dni y contraseña no introducido":
-      assertEquals(usuarioRepository.findByDniAndContrasena(a.get(0).get("medico"), a.get(0).get("contraseña")), null);
+      assertEquals(null, usuarioRepository.findByDniAndContrasena(a.get(0).get("medico"), a.get(0).get("contraseña")));
       break;
     case "Dni no introducido":
-      assertEquals(usuarioRepository.findByDniAndContrasena(a.get(0).get("medico"), a.get(0).get("contraseña")), null);
+      assertEquals(null, usuarioRepository.findByDniAndContrasena(a.get(0).get("medico"), a.get(0).get("contraseña")));
       break;
     case "Contraseña no introducida ":
-      assertEquals(usuarioRepository.findByDniAndContrasena(a.get(0).get("medico"), a.get(0).get("contraseña")), null);
+      assertEquals(null, usuarioRepository.findByDniAndContrasena(a.get(0).get("medico"), a.get(0).get("contraseña")));
       break;
     case "Contraseña incorrecta":
-      assertEquals(usuarioRepository.findByDniAndContrasena(a.get(0).get("medico"), a.get(0).get("contraseña")), null);
+      assertEquals(null, usuarioRepository.findByDniAndContrasena(a.get(0).get("medico"), a.get(0).get("contraseña")));
       break;
     case "Medico incorrecto":
-      assertEquals(usuarioRepository.findByDniAndContrasena(a.get(0).get("medico"), a.get(0).get("contraseña")), null);
+      assertEquals(null, usuarioRepository.findByDniAndContrasena(a.get(0).get("medico"), a.get(0).get("contraseña")));
       break;
     case "Resto de casos":
       assertTrue(usuarioRepository.findByDniAndContrasena(a.get(0).get("medico"), a.get(0).get("contraseña")) != null);

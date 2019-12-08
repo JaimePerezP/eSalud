@@ -116,27 +116,27 @@ public class Especialidad {
       if (other.horaFin != null)
         return false;
     } else if (!horaFin.equals(other.horaFin))
-      return false;
+    	return false;
     if (horaInicio == null) {
       if (other.horaInicio != null)
         return false;
     } else if (!horaInicio.equals(other.horaInicio))
-      return false;
+    	return false;
     if (id == null) {
       if (other.id != null)
         return false;
     } else if (!id.equals(other.id))
-      return false;
+    	return false;
     if (especialidad == null) {
       if (other.especialidad != null)
         return false;
     } else if (!especialidad.equals(other.especialidad))
-      return false;
+    	return false;
     if (tiempoConsulta == null) {
       if (other.tiempoConsulta != null)
         return false;
     } else if (!tiempoConsulta.equals(other.tiempoConsulta))
-      return false;
+    	return false;
     return true;
   }
 

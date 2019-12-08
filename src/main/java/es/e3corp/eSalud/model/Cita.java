@@ -152,17 +152,17 @@ public class Cita {
       if (other.centro != null)
         return false;
     } else if (!centro.equals(other.centro))
-      return false;
+    	return false;
     if (fecha == null) {
       if (other.fecha != null)
         return false;
     } else if (!fecha.equals(other.fecha))
-      return false;
+    	return false;
     if (hora == null) {
       if (other.hora != null)
         return false;
     } else if (!hora.equals(other.hora))
-      return false;
+    	return false;
     if (id == null) {
       if (other.id != null)
         return false;
@@ -172,17 +172,17 @@ public class Cita {
       if (other.medico != null)
         return false;
     } else if (!medico.equals(other.medico))
-      return false;
+    	return false;
     if (paciente == null) {
       if (other.paciente != null)
         return false;
     } else if (!paciente.equals(other.paciente))
-      return false;
+    	return false;
     if (tipo == null) {
       if (other.tipo != null)
         return false;
     } else if (!tipo.equals(other.tipo))
-      return false;
+    	return false;
     return true;
   }
 

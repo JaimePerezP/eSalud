@@ -95,7 +95,9 @@ public class Utilidades {
   public static Optional<Usuario> desencriptarOptionalUsuario(final Optional<Usuario> user) {
 
     try {
-
+    	if (user.isPresent()) {
+          	final Usuario stringValue = user.get();
+          	}
       user.get().setDni(desencriptar(user.get().getDni()));
       user.get().setNombre(desencriptar(user.get().getNombre()));
       user.get().setApellidos(desencriptar(user.get().getApellidos()));
@@ -151,6 +153,10 @@ public class Utilidades {
   public static List<Usuario> desencriptarListaUsuarios(final Optional<List<Usuario>> users) {
 
     final List<Usuario> usersDesencriptado = new ArrayList<>();
+    
+    if (users.isPresent()) {
+      	final List<Usuario> stringValue = users.get();
+      	}
 
     for (int i = 0; i < users.get().size(); i++) {
       final Usuario usuario = users.get().get(i);
@@ -238,6 +244,10 @@ public class Utilidades {
 
   public static Optional<Cita> desencriptarOptionalCita(final Optional<Cita> cita) {
     try {
+    	
+    	if (cita.isPresent()) {
+          	final Cita stringValue = cita.get();
+          	}
 
       cita.get().setPaciente(desencriptar(cita.get().getPaciente()));
       cita.get().setPaciente(desencriptar(cita.get().getPaciente()));
@@ -266,6 +276,10 @@ public class Utilidades {
   public static Optional<Especialidad> desencriptarOptionalEspecialidad(final Optional<Especialidad> especialidad) {
     try {
 
+    	if (especialidad.isPresent()) {
+          	final Especialidad stringValue = especialidad.get();
+          	}
+    	
       especialidad.get().setEspecialidad(desencriptar(especialidad.get().getEspecialidad()));
       especialidad.get().setHoraInicio(desencriptar(especialidad.get().getHoraInicio()));
       especialidad.get().setHoraFin(desencriptar(especialidad.get().getHoraFin()));
@@ -279,6 +293,10 @@ public class Utilidades {
   public static List<Especialidad> desencriptarListaEspecialidades(Optional<List<Especialidad>> especialidades) {
     final List<Especialidad> especialidadesDesencriptado = new ArrayList<>();
 
+    if (especialidades.isPresent()) {
+      	final List<Especialidad> stringValue = especialidades.get();
+      	}
+    
     for (int i = 0; i < especialidades.get().size(); i++) {
       final Especialidad especialidad = especialidades.get().get(i);
       especialidadesDesencriptado.add(desencriptarEspecialidad(especialidad));
