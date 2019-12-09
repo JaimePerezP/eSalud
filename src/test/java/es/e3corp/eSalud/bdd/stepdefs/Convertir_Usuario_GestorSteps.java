@@ -56,7 +56,7 @@ public class Convertir_Usuario_GestorSteps {
 		//
 		// For other transformations you can register a DataTableType.
 		tabla = dataTable.asMaps(String.class, String.class);
-		driver.get("localhost:8080/auth/login");
+		driver.get("http://localhost:8080/auth/login");
 		driver.findElement(By.xpath("//input[@placeholder='DNI']")).sendKeys("admin");
 		driver.findElement(By.xpath("//input[@placeholder='Contraseña']")).sendKeys("root");
 		driver.findElement(By.xpath("//input[@value='Acceder']")).click();
