@@ -60,6 +60,7 @@ const routes: Routes = [
     ]
   },
   { path: 'admin/ModificarMedico/ModificarMedico', redirectTo: 'admin/ModificarMedico' },
+  { path: 'admin/ModificarMedico/Cambio', redirectTo: 'citas' },
   { path: 'admin/ModificarMedico/RegistrarEspecialidad', redirectTo: 'admin/RegistrarEspecialidad' },
   { path: 'admin/ModificarMedico/ModificarPaciente', redirectTo: 'admin/ModificarPaciente' },
   { path: 'admin/ModificarMedico/RegistrarAdmin', redirectTo: 'admin/RegistrarAdmin' },
@@ -77,6 +78,7 @@ const routes: Routes = [
     ]
   },
   { path: 'admin/ModificarPaciente/ModificarMedico', redirectTo: 'admin/ModificarMedico' },
+  { path: 'admin/ModificarPaciente/Cambio', redirectTo: 'citas' },
   { path: 'admin/ModificarPaciente/RegistrarEspecialidad', redirectTo: 'admin/RegistrarEspecialidad' },
   { path: 'admin/ModificarPaciente/ModificarPaciente', redirectTo: 'admin/ModificarPaciente' },
   { path: 'admin/ModificarPaciente/RegistrarAdmin', redirectTo: 'admin/RegistrarAdmin' },
@@ -93,6 +95,7 @@ const routes: Routes = [
     ]
   },
   { path: 'admin/RegistrarEspecialidad/ModificarMedico', redirectTo: 'admin/ModificarMedico' },
+  { path: 'admin/RegistrarEspecialidad/Cambio', redirectTo: 'citas' },
   { path: 'admin/RegistrarEspecialidad/RegistrarEspecialidad', redirectTo: 'admin/RegistrarEspecialidad' },
   { path: 'admin/RegistrarEspecialidad/ModificarPaciente', redirectTo: 'admin/ModificarPaciente' },
   { path: 'admin/RegistrarEspecialidad/RegistrarAdmin', redirectTo: 'admin/RegistrarAdmin' },
@@ -108,6 +111,7 @@ const routes: Routes = [
     ]
   },
   { path: 'admin/RegistrarAdmin/ModificarMedico', redirectTo: 'admin/ModificarMedico' },
+  { path: 'admin/RegistrarAdmin/Cambio', redirectTo: 'citas' },
   { path: 'admin/RegistrarAdmin/RegistrarEspecialidad', redirectTo: 'admin/RegistrarEspecialidad' },
   { path: 'admin/RegistrarAdmin/ModificarPaciente', redirectTo: 'admin/ModificarPaciente' },
   { path: 'admin/RegistrarAdmin/RegistrarAdmin', redirectTo: 'admin/RegistrarAdmin' },
@@ -123,6 +127,7 @@ const routes: Routes = [
     ]
   },
   { path: 'admin/RegistrarPaciente/ModificarMedico', redirectTo: 'admin/ModificarMedico' },
+  { path: 'admin/RegistrarPaciente/Cambio', redirectTo: 'citas' },
   { path: 'admin/RegistrarPaciente/RegistrarEspecialidad', redirectTo: 'admin/RegistrarEspecialidad' },
   { path: 'admin/RegistrarPaciente/ModificarPaciente', redirectTo: 'admin/ModificarPaciente' },
   { path: 'admin/RegistrarPaciente/RegistrarAdmin', redirectTo: 'admin/RegistrarAdmin' },
@@ -138,6 +143,7 @@ const routes: Routes = [
     ]
   },
   { path: 'admin/RegistrarMedico/ModificarMedico', redirectTo: 'admin/ModificarMedico' },
+  { path: 'admin/RegistrarMedico/Cambio', redirectTo: 'citas' },
   { path: 'admin/RegistrarMedico/RegistrarEspecialidad', redirectTo: 'admin/RegistrarEspecialidad' },
   { path: 'admin/RegistrarMedico/ModificarPaciente', redirectTo: 'admin/ModificarPaciente' },
   { path: 'admin/RegistrarMedico/RegistrarAdmin', redirectTo: 'admin/RegistrarAdmin' },
@@ -153,6 +159,7 @@ const routes: Routes = [
     ]
   },
   { path: 'admin/RegistrarPaciente/ModificarMedico', redirectTo: 'admin/ModificarMedico' },
+  { path: 'admin/RegistrarPaciente/Cambio', redirectTo: 'citas' },
   { path: 'admin/RegistrarPaciente/RegistrarEspecialidad', redirectTo: 'admin/RegistrarEspecialidad' },
   { path: 'admin/RegistrarPaciente/ModificarPaciente', redirectTo: 'admin/ModificarPaciente' },
   { path: 'admin/RegistrarPaciente/RegistrarAdmin', redirectTo: 'admin/RegistrarAdmin' },
@@ -168,6 +175,7 @@ const routes: Routes = [
     ]
   },
   { path: 'admin/MostrarEspecialidades/RegistrarEspecialidad', redirectTo: 'admin/RegistrarEspecialidad' },
+  { path: 'admin/MostrarEspecialidades/Cambio', redirectTo: 'citas' },
   { path: 'admin/MostrarEspecialidades/ModificarPaciente', redirectTo: 'admin/ModificarPaciente' },
   { path: 'admin/MostrarEspecialidades/RegistrarAdmin', redirectTo: 'admin/RegistrarAdmin' },
   { path: 'admin/MostrarEspecialidades/RegistrarMedico', redirectTo: 'admin/RegistrarMedico' },
@@ -183,6 +191,7 @@ const routes: Routes = [
     ]
   },
   { path: 'admin/MostrarPersonalMedico/ModificarMedico', redirectTo: 'admin/ModificarMedico' },
+  { path: 'admin/MostrarPersonalMedico/Cambio', redirectTo: 'citas' },
   { path: 'admin/MostrarPersonalMedico/RegistrarEspecialidad', redirectTo: 'admin/RegistrarEspecialidad' },
   { path: 'admin/MostrarPersonalMedico/ModificarPaciente', redirectTo: 'admin/ModificarPaciente' },
   { path: 'admin/MostrarPersonalMedico/RegistrarAdmin', redirectTo: 'admin/RegistrarAdmin' },

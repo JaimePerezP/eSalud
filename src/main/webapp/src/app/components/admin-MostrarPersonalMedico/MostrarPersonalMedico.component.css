@@ -1,6 +1,10 @@
 table{
 	width:100%;
 }
+.example-container{
+  height: 100vh;
+  overflow: auto;
+}
 mat-paginator{
 	width:100%;
 	background-color: rgb(218, 241, 230);
