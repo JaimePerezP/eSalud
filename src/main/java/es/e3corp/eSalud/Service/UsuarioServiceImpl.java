@@ -10,8 +10,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import es.e3corp.eSalud.exception.UserNotFoundException;
-import es.e3corp.eSalud.model.Cita;
-import es.e3corp.eSalud.model.Especialidad;
 import es.e3corp.eSalud.model.Usuario;
 import es.e3corp.eSalud.repository.UsuarioRepository;
 import es.e3corp.eSalud.utilidades.Utilidades;
@@ -52,7 +50,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     if (user.isPresent()) {
 
-      log.debug(String.format("Read userId '{}'", userDni));
+      log.debug(String.format("Read userId '{%s}'", userDni));
 
       final Optional<Usuario> userDesencriptado = Utilidades.desencriptarOptionalUsuario(user);
       
@@ -119,7 +117,6 @@ public class UsuarioServiceImpl implements UsuarioService {
   @Override
   public List<Usuario> getUsersByRol(final String rol) {
     final List<Usuario> usersRol = userRepository.findByRol(rol);
-    final List<Usuario> usuariosRolDesenc = Utilidades.desencriptarUsuarios(usersRol);
     return usersRol;
   }
 

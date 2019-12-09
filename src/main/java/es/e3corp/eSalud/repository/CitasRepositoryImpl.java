@@ -106,7 +106,6 @@ public class CitasRepositoryImpl implements CitasRepository {
     final Cita cita = this.mongoOperations.findOne(new Query(Criteria.where("paciente").is(idPaciente).and(MEDICO)
         .is(idMedico).and("fecha").is(fecha).and("hora").is(hora)), Cita.class);
 
-    final Cita citaDesencriptada = Utilidades.desencriptarCita(cita);
     return cita;
   }
 

@@ -69,7 +69,7 @@ public class CitaServiceImpl implements CitaService {
 	public Cita findByCitaId(String citaId) {
 		Optional<Cita> cita = citaRepository.findOne(citaId);
 		if (cita.isPresent()) {
-			LOG.debug(String.format("Read citaId '{}'", citaId));
+			LOG.debug(String.format("Read citaId '{%s}'", citaId));
 			return cita.get();
 		} else {
 			throw new CitaNotFoundException(citaId);

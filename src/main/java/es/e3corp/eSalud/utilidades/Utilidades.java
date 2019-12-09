@@ -246,12 +246,6 @@ public class Utilidades {
 	public static Optional<Cita> desencriptarOptionalCita(final Optional<Cita> cita) {
 		try {
 
-			Cita c = null;
-
-			if (cita.isPresent()) {
-				c = cita.get();
-			}
-
 			cita.get().setPaciente(desencriptar(cita.get().getPaciente()));
 			cita.get().setPaciente(desencriptar(cita.get().getPaciente()));
 
@@ -278,13 +272,7 @@ public class Utilidades {
 
 	public static Optional<Especialidad> desencriptarOptionalEspecialidad(final Optional<Especialidad> especialidad) {
 		try {
-
-			Especialidad e = null;
-
-			if (especialidad.isPresent()) {
-				e = especialidad.get();
-			}
-
+			
 			especialidad.get().setEspecialidad(desencriptar(especialidad.get().getEspecialidad()));
 			especialidad.get().setHoraInicio(desencriptar(especialidad.get().getHoraInicio()));
 			especialidad.get().setHoraFin(desencriptar(especialidad.get().getHoraFin()));
