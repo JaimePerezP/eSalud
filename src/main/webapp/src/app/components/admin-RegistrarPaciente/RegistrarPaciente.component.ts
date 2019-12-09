@@ -30,6 +30,7 @@ export class RegistrarPacienteComponent implements OnInit {
             tel: ['', Validators.required],
             correo: ['', Validators.required],
             password: ['', Validators.required],
+            localidad: '',
             rol: 'paciente',
             medico: '',
         });
