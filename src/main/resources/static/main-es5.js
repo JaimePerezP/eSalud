@@ -907,7 +907,7 @@
         /*!************************************!*\
           !*** ./src/app/_services/index.ts ***!
           \************************************/
-        /*! exports provided: AuthService, EspecialidadesService, UserService, CitasService, AlertService */
+        /*! exports provided: AuthService, UserService, CitasService, AlertService, EspecialidadesService */
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
@@ -3195,7 +3195,7 @@
             // The list of file replacements can be found in `angular.json`.
             var environment = {
                 production: false,
-                apiUrl: 'http://localhost:8080',
+                apiUrl: 'https://esalud-e4.herokuapp.com',
             };
             /*
              * For easier debugging in development mode, you can import the following file
