@@ -151,37 +151,44 @@ public class Cita {
     if (centro == null) {
       if (other.centro != null)
         return false;
-    } else if (!centro.equals(other.centro))
+    } 
+    else if (!centro.equals(other.centro))
     	return false;
     if (fecha == null) {
       if (other.fecha != null)
         return false;
-    } else if (!fecha.equals(other.fecha))
+    } 
+    else if (!fecha.equals(other.fecha))
     	return false;
     if (hora == null) {
       if (other.hora != null)
         return false;
-    } else if (!hora.equals(other.hora))
+    } 
+    else if (!hora.equals(other.hora))
     	return false;
     if (id == null) {
       if (other.id != null)
         return false;
-    } else if (!id.equals(other.id))
+    } 
+    else if (!id.equals(other.id))
       return false;
     if (medico == null) {
       if (other.medico != null)
         return false;
-    } else if (!medico.equals(other.medico))
+    } 
+    else if (!medico.equals(other.medico))
     	return false;
     if (paciente == null) {
       if (other.paciente != null)
         return false;
-    } else if (!paciente.equals(other.paciente))
+    } 
+    else if (!paciente.equals(other.paciente))
     	return false;
     if (tipo == null) {
       if (other.tipo != null)
         return false;
-    } else if (!tipo.equals(other.tipo))
+    } 
+    else if (!tipo.equals(other.tipo))
     	return false;
     return true;
   }
