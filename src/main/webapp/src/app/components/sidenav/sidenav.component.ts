@@ -18,13 +18,20 @@ export class SidenavComponent implements OnInit {
   fillerNav= [
       { name: "Citas", route: "citas", icon: "assignment" },
       { name: "Registrar Cita", route: "RegistrarCita", icon: "edit" },
-      { name: "Cambiar a modo medico", route: "Cambio", icon: "edit" },
+      { name: "Cambiar a modo medico", route: "CambioMedico", icon: "supervisor_account" },
       { name: "Salir", route: "/", icon: "logout" }
   ]
 
   fillerNav2=[
     { name: "Citas", route: "citas", icon: "assignment" },
     { name: "Registrar Cita", route: "RegistrarCita", icon: "edit" },
+    { name: "Salir", route: "/", icon: "logout" }
+  ]
+
+  fillerNav3= [
+    { name: "Citas", route: "citas", icon: "assignment" },
+    { name: "Registrar Cita", route: "RegistrarCita", icon: "edit" },
+    { name: "Cambiar a modo gestor", route: "CambioGestor", icon: "supervisor_account" },
     { name: "Salir", route: "/", icon: "logout" }
   ]
 

@@ -25,6 +25,13 @@
               {{nav.name}}</a>
           </mat-nav-list>
         </ng-container>
+        <ng-container *ngIf="rol==='admin'">
+          <mat-nav-list>
+            <a mat-list-item [routerLink]="nav.route" *ngFor="let nav of fillerNav3">
+                <mat-icon>{{nav.icon}}</mat-icon>
+              {{nav.name}}</a>
+          </mat-nav-list>
+        </ng-container>
       </mat-sidenav>
   
       <mat-sidenav-content>
