@@ -54,9 +54,11 @@ public class EspecialidadServiceImpl implements EspecialidadService {
       final Optional<Especialidad> especialidadDesencriptado = Utilidades
           .desencriptarOptionalEspecialidad(especialidad);
       
-      if (especialidadDesencriptado.isPresent()) {
-    	  final Especialidad stringValue = especialidadDesencriptado.get();
-      	}
+		Especialidad esp  = null;
+
+		if (especialidadDesencriptado.isPresent()) {
+			esp = especialidadDesencriptado.get();
+		}
 
       return especialidadDesencriptado.get();
 

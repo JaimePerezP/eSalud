@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import es.e3corp.eSalud.exception.UserNotFoundException;
 import es.e3corp.eSalud.model.Cita;
+import es.e3corp.eSalud.model.Especialidad;
 import es.e3corp.eSalud.model.Usuario;
 import es.e3corp.eSalud.repository.UsuarioRepository;
 import es.e3corp.eSalud.utilidades.Utilidades;
@@ -55,9 +56,11 @@ public class UsuarioServiceImpl implements UsuarioService {
 
       final Optional<Usuario> userDesencriptado = Utilidades.desencriptarOptionalUsuario(user);
       
-      if (userDesencriptado.isPresent()) {
-      	final Usuario stringValue = userDesencriptado.get();
-      	}
+      Usuario usu  = null;
+
+		if (userDesencriptado.isPresent()) {
+			usu = userDesencriptado.get();
+		}
 
       return userDesencriptado.get();
 
