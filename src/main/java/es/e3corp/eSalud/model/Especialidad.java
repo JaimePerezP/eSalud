@@ -115,7 +115,8 @@ public class Especialidad {
     if (horaFin == null) {
       if (other.horaFin != null)
         return false;
-    } else if (!horaFin.equals(other.horaFin))
+    } 
+    else if (!horaFin.equals(other.horaFin))
     	return false;
     if (horaInicio == null) {
       if (other.horaInicio != null)
