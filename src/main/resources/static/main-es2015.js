@@ -2069,6 +2069,7 @@ let RegistrarAdminComponent = class RegistrarAdminComponent {
             dni: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
             nombre: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
             apellidos: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            localidad: '',
             centro: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
             tel: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
             correo: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
@@ -2123,9 +2124,9 @@ let RegistrarAdminComponent = class RegistrarAdminComponent {
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["first"])())
             .subscribe(data => {
             this.alertService.success('Registro completado', true);
-            console.log("[CLIENTE] Médico registrado.");
+            console.log("[CLIENTE] Administrador registrado.");
         }, error => {
-            this.alertService.error('Error: El médico ya está registrado.');
+            this.alertService.error('Error: El administrador ya está registrado.');
             this.loading = false;
         });
         function allLetter(inputtxt) {
@@ -2421,9 +2422,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
-/* harmony import */ var src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/_services/alert.service */ "./src/app/_services/alert.service.ts");
-/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../_services */ "./src/app/_services/index.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+/* harmony import */ var src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/_services/alert.service */ "./src/app/_services/alert.service.ts");
+/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../_services */ "./src/app/_services/index.ts");
+
 
 
 
@@ -2431,8 +2434,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let RegistrarPacienteComponent = class RegistrarPacienteComponent {
-    constructor(formBuilder, userService, alertService) {
+    constructor(formBuilder, router, userService, alertService) {
         this.formBuilder = formBuilder;
+        this.router = router;
         this.userService = userService;
         this.alertService = alertService;
         this.loading = false;
@@ -2495,12 +2499,13 @@ let RegistrarPacienteComponent = class RegistrarPacienteComponent {
         }
         this.loading = true;
         this.userService.register(this.registerForm.value)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["first"])())
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["first"])())
             .subscribe(data => {
             this.alertService.success('Registro completado', true);
-            console.log("[CLIENTE] Médico registrado.");
+            console.log("[CLIENTE] Paciente registrado.");
+            this.router.navigate(['/admin/ModificarPaciente'], { queryParams: { registered: true } });
         }, error => {
-            this.alertService.error('Error: El médico ya está registrado.');
+            this.alertService.error('Error: El paciente ya está registrado.');
             this.loading = false;
         });
         function allLetter(inputtxt) {
@@ -2526,8 +2531,9 @@ let RegistrarPacienteComponent = class RegistrarPacienteComponent {
 };
 RegistrarPacienteComponent.ctorParameters = () => [
     { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] },
-    { type: _services__WEBPACK_IMPORTED_MODULE_5__["UserService"] },
-    { type: src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_4__["AlertService"] }
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
+    { type: _services__WEBPACK_IMPORTED_MODULE_6__["UserService"] },
+    { type: src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_5__["AlertService"] }
 ];
 RegistrarPacienteComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -3480,7 +3486,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_3__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\jorge\Documents\GitHub\eSalud\src\main\webapp\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\jaime\Documents\GitHub\eSalud\src\main\webapp\src\main.ts */"./src/main.ts");
 
 
 /***/ })

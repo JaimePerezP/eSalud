@@ -1921,6 +1921,7 @@
                         dni: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
                         nombre: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
                         apellidos: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+                        localidad: '',
                         centro: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
                         tel: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
                         correo: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
@@ -1980,9 +1981,9 @@
                         .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["first"])())
                         .subscribe(function (data) {
                         _this.alertService.success('Registro completado', true);
-                        console.log("[CLIENTE] Médico registrado.");
+                        console.log("[CLIENTE] Administrador registrado.");
                     }, function (error) {
-                        _this.alertService.error('Error: El médico ya está registrado.');
+                        _this.alertService.error('Error: El administrador ya está registrado.');
                         _this.loading = false;
                     });
                     function allLetter(inputtxt) {
@@ -2262,12 +2263,14 @@
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
             /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
-            /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
-            /* harmony import */ var src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/_services/alert.service */ "./src/app/_services/alert.service.ts");
-            /* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../_services */ "./src/app/_services/index.ts");
+            /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+            /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+            /* harmony import */ var src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/_services/alert.service */ "./src/app/_services/alert.service.ts");
+            /* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../_services */ "./src/app/_services/index.ts");
             var RegistrarPacienteComponent = /** @class */ (function () {
-                function RegistrarPacienteComponent(formBuilder, userService, alertService) {
+                function RegistrarPacienteComponent(formBuilder, router, userService, alertService) {
                     this.formBuilder = formBuilder;
+                    this.router = router;
                     this.userService = userService;
                     this.alertService = alertService;
                     this.loading = false;
@@ -2335,12 +2338,13 @@
                     }
                     this.loading = true;
                     this.userService.register(this.registerForm.value)
-                        .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["first"])())
+                        .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["first"])())
                         .subscribe(function (data) {
                         _this.alertService.success('Registro completado', true);
-                        console.log("[CLIENTE] Médico registrado.");
+                        console.log("[CLIENTE] Paciente registrado.");
+                        _this.router.navigate(['/admin/ModificarPaciente'], { queryParams: { registered: true } });
                     }, function (error) {
-                        _this.alertService.error('Error: El médico ya está registrado.');
+                        _this.alertService.error('Error: El paciente ya está registrado.');
                         _this.loading = false;
                     });
                     function allLetter(inputtxt) {
@@ -2367,8 +2371,9 @@
             }());
             RegistrarPacienteComponent.ctorParameters = function () { return [
                 { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] },
-                { type: _services__WEBPACK_IMPORTED_MODULE_5__["UserService"] },
-                { type: src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_4__["AlertService"] }
+                { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
+                { type: _services__WEBPACK_IMPORTED_MODULE_6__["UserService"] },
+                { type: src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_5__["AlertService"] }
             ]; };
             RegistrarPacienteComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -3203,7 +3208,7 @@
           \***************************/
         /*! no static exports found */
         /***/ (function (module, exports, __webpack_require__) {
-            module.exports = __webpack_require__(/*! C:\Users\jorge\Documents\GitHub\eSalud\src\main\webapp\src\main.ts */ "./src/main.ts");
+            module.exports = __webpack_require__(/*! C:\Users\jaime\Documents\GitHub\eSalud\src\main\webapp\src\main.ts */ "./src/main.ts");
             /***/ 
         })
     }, [[0, "runtime", "vendor"]]]);
