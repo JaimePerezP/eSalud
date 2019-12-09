@@ -16,7 +16,7 @@ export class SidenavComponent implements OnInit {
 
   fillerNav = [
     { name: "Citas", route: "citas", icon: "assignment" },
-    { name: "Registrar Cita", route: "RegistrarCita", icon: "edit" },
+    { name: "Registrar cita", route: "RegistrarCita", icon: "edit" },
     { name: "Salir", route: "/", icon: "logout" }
   ]
 
