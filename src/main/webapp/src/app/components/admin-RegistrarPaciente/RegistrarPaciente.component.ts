@@ -30,6 +30,7 @@ export class RegistrarPacienteComponent implements OnInit {
             tel: ['', Validators.required],
             correo: ['', Validators.required],
             password: ['', Validators.required],
+            localidad: '',
             rol: 'paciente',
             medico: '',
         });
@@ -93,10 +94,10 @@ export class RegistrarPacienteComponent implements OnInit {
             .subscribe(
                 data => {
                     this.alertService.success('Registro completado', true);
-                    console.log("[CLIENTE] Médico registrado.");
+                    console.log("[CLIENTE] Paciente registrado.");
                 },
                 error => {
-                    this.alertService.error('Error: El médico ya está registrado.');
+                    this.alertService.error('Error: El paciente ya está registrado.');
                     this.loading = false;
                 });
 

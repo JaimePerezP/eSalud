@@ -79,9 +79,9 @@ public class Registro_Usuarios_GestorSteps {
 		if (tabla.get(0).get("resultadoEsperado").equals("REGISTRO MEDICO OK")) {
 			driver.get("http://localhost:8080/admin/RegistrarMedico");
 		} else if (tabla.get(0).get("resultadoEsperado").equals("REGISTRO PACIENTE OK")) {
-
+			driver.get("http://localhost:8080/admin/RegistrarPaciente");
 		} else if (tabla.get(0).get("resultadoEsperado").equals("REGISTRO ADMIN OK")) {
-
+			driver.get("http://localhost:8080/admin/RegistrarAdmin");
 		}
 	}
 
@@ -115,6 +115,56 @@ public class Registro_Usuarios_GestorSteps {
 					.sendKeys(tabla.get(0).get("email"));
 			driver.findElementByXPath(
 					"/html/body/linl/app-root/app-sidenavadmin/div/mat-sidenav-container/mat-sidenav-content/app-registrarmedico/div/form/div[2]/p[1]/input")
+					.click();
+		} else if (tabla.get(0).get("resultadoEsperado").equals("REGISTRO PACIENTE OK")) {
+			driver.findElementByXPath(
+					"/html/body/linl/app-root/app-sidenavadmin/div/mat-sidenav-container/mat-sidenav-content/app-registrarpaciente/div/form/div[1]/div[1]/div[2]/input")
+					.sendKeys(tabla.get(0).get("dni"));
+			driver.findElementByXPath(
+					"/html/body/linl/app-root/app-sidenavadmin/div/mat-sidenav-container/mat-sidenav-content/app-registrarpaciente/div/form/div[1]/div[2]/div[2]/input")
+					.sendKeys(tabla.get(0).get("nombre"));
+			driver.findElementByXPath(
+					"/html/body/linl/app-root/app-sidenavadmin/div/mat-sidenav-container/mat-sidenav-content/app-registrarpaciente/div/form/div[1]/div[3]/div[2]/input")
+					.sendKeys(tabla.get(0).get("apellidos"));
+			driver.findElementByXPath(
+					"/html/body/linl/app-root/app-sidenavadmin/div/mat-sidenav-container/mat-sidenav-content/app-registrarpaciente/div/form/div[1]/div[4]/div[2]/input")
+					.sendKeys(tabla.get(0).get("pwd"));
+			driver.findElementByXPath(
+					"/html/body/linl/app-root/app-sidenavadmin/div/mat-sidenav-container/mat-sidenav-content/app-registrarpaciente/div/form/div[1]/div[5]/div[2]/input")
+					.sendKeys(tabla.get(0).get("centro"));
+			driver.findElementByXPath(
+					"/html/body/linl/app-root/app-sidenavadmin/div/mat-sidenav-container/mat-sidenav-content/app-registrarpaciente/div/form/div[1]/div[6]/div[2]/input")
+					.sendKeys(tabla.get(0).get("numTelefono"));
+			driver.findElementByXPath(
+					"/html/body/linl/app-root/app-sidenavadmin/div/mat-sidenav-container/mat-sidenav-content/app-registrarpaciente/div/form/div[1]/div[7]/div[2]/input")
+					.sendKeys(tabla.get(0).get("email"));
+			driver.findElementByXPath(
+					"/html/body/linl/app-root/app-sidenavadmin/div/mat-sidenav-container/mat-sidenav-content/app-registrarpaciente/div/form/div[2]/p[1]/input")
+					.click();
+		} else if (tabla.get(0).get("resultadoEsperado").equals("REGISTRO ADMIN OK")) {
+			driver.findElementByXPath(
+					"/html/body/linl/app-root/app-sidenavadmin/div/mat-sidenav-container/mat-sidenav-content/app-registraradmin/div/form/div[1]/div[1]/div[2]/input")
+					.sendKeys(tabla.get(0).get("dni"));
+			driver.findElementByXPath(
+					"/html/body/linl/app-root/app-sidenavadmin/div/mat-sidenav-container/mat-sidenav-content/app-registraradmin/div/form/div[1]/div[2]/div[2]/input")
+					.sendKeys(tabla.get(0).get("nombre"));
+			driver.findElementByXPath(
+					"/html/body/linl/app-root/app-sidenavadmin/div/mat-sidenav-container/mat-sidenav-content/app-registraradmin/div/form/div[1]/div[3]/div[2]/input")
+					.sendKeys(tabla.get(0).get("apellidos"));
+			driver.findElementByXPath(
+					"/html/body/linl/app-root/app-sidenavadmin/div/mat-sidenav-container/mat-sidenav-content/app-registraradmin/div/form/div[1]/div[4]/div[2]/input")
+					.sendKeys(tabla.get(0).get("pwd"));
+			driver.findElementByXPath(
+					"/html/body/linl/app-root/app-sidenavadmin/div/mat-sidenav-container/mat-sidenav-content/app-registraradmin/div/form/div[1]/div[5]/div[2]/input")
+					.sendKeys(tabla.get(0).get("centro"));
+			driver.findElementByXPath(
+					"/html/body/linl/app-root/app-sidenavadmin/div/mat-sidenav-container/mat-sidenav-content/app-registraradmin/div/form/div[1]/div[6]/div[2]/input")
+					.sendKeys(tabla.get(0).get("numTelefono"));
+			driver.findElementByXPath(
+					"/html/body/linl/app-root/app-sidenavadmin/div/mat-sidenav-container/mat-sidenav-content/app-registraradmin/div/form/div[1]/div[7]/div[2]/input")
+					.sendKeys(tabla.get(0).get("email"));
+			driver.findElementByXPath(
+					"/html/body/linl/app-root/app-sidenavadmin/div/mat-sidenav-container/mat-sidenav-content/app-registraradmin/div/form/div[2]/p[1]/input")
 					.click();
 		}
 	}

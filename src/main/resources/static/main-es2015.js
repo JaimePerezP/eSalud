@@ -2069,6 +2069,7 @@ let RegistrarAdminComponent = class RegistrarAdminComponent {
             dni: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
             nombre: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
             apellidos: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            localidad: '',
             centro: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
             tel: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
             correo: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
@@ -2123,9 +2124,9 @@ let RegistrarAdminComponent = class RegistrarAdminComponent {
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["first"])())
             .subscribe(data => {
             this.alertService.success('Registro completado', true);
-            console.log("[CLIENTE] Médico registrado.");
+            console.log("[CLIENTE] Administrador registrado.");
         }, error => {
-            this.alertService.error('Error: El médico ya está registrado.');
+            this.alertService.error('Error: El administrador ya está registrado.');
             this.loading = false;
         });
         function allLetter(inputtxt) {
@@ -2421,9 +2422,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
-/* harmony import */ var src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/_services/alert.service */ "./src/app/_services/alert.service.ts");
-/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../_services */ "./src/app/_services/index.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+/* harmony import */ var src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/_services/alert.service */ "./src/app/_services/alert.service.ts");
+/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../_services */ "./src/app/_services/index.ts");
+
 
 
 
@@ -2431,8 +2434,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let RegistrarPacienteComponent = class RegistrarPacienteComponent {
-    constructor(formBuilder, userService, alertService) {
+    constructor(formBuilder, router, userService, alertService) {
         this.formBuilder = formBuilder;
+        this.router = router;
         this.userService = userService;
         this.alertService = alertService;
         this.loading = false;
@@ -2447,6 +2451,7 @@ let RegistrarPacienteComponent = class RegistrarPacienteComponent {
             tel: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
             correo: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
             password: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            localidad: '',
             rol: 'paciente',
             medico: '',
         });
@@ -2494,12 +2499,13 @@ let RegistrarPacienteComponent = class RegistrarPacienteComponent {
         }
         this.loading = true;
         this.userService.register(this.registerForm.value)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["first"])())
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["first"])())
             .subscribe(data => {
             this.alertService.success('Registro completado', true);
-            console.log("[CLIENTE] Médico registrado.");
+            console.log("[CLIENTE] Paciente registrado.");
+            this.router.navigate(['/admin/ModificarPaciente'], { queryParams: { registered: true } });
         }, error => {
-            this.alertService.error('Error: El médico ya está registrado.');
+            this.alertService.error('Error: El paciente ya está registrado.');
             this.loading = false;
         });
         function allLetter(inputtxt) {
@@ -2525,8 +2531,9 @@ let RegistrarPacienteComponent = class RegistrarPacienteComponent {
 };
 RegistrarPacienteComponent.ctorParameters = () => [
     { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] },
-    { type: _services__WEBPACK_IMPORTED_MODULE_5__["UserService"] },
-    { type: src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_4__["AlertService"] }
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
+    { type: _services__WEBPACK_IMPORTED_MODULE_6__["UserService"] },
+    { type: src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_5__["AlertService"] }
 ];
 RegistrarPacienteComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -3258,7 +3265,7 @@ SidenavComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".example-container {\r\n    display: flex;\r\n    flex-direction: column;\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    background: #23C185;\r\n  }\r\n .mat-toolbar.mat-primary{\r\n  background: #23C185;\r\n  color: #fff;\r\n }\r\n .example-is-mobile .example-toolbar {\r\n    position: fixed;\r\n    /* Make sure the toolbar will stay on top of the content as it scrolls past. */\r\n    z-index: 2;\r\n    width: 60%;\r\n  }\r\n .mat-icon{\r\n  position: relative;\r\n}\r\n h1.example-app-name {\r\n    margin-left: 8px;\r\n  }\r\n .example-sidenav-container {\r\n    /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This\r\n       causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */\r\n    flex: 1;\r\n\r\n  }\r\n .mat-sidenav{\r\n\tbackground: rgb(255, 255, 255);\r\n\t\r\n  }\r\n .example-is-mobile .example-sidenav-container {\r\n    /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the\r\n       `<body>` to be our scrolling element for mobile layouts. */\r\n    flex: 1 0 auto;\r\n\r\n  }\r\n .mat-nav-list{\r\n    \r\n\tmargin-right: 0.3em;\r\n\tmargin-left: 0.3em;\r\n\tbackground: rgb(255, 255, 255);\r\n\t\r\n\t\r\n  }\r\n .but1 {\r\n\tbackground:linear-gradient(to bottom, rgb(255, 255, 255) 5%, rgb(255, 255, 255) 100%);\r\n\tborder-radius:9px;\r\n\tcolor:rgb(0, 0, 0);\r\n\tfont-family:Arial;\r\n\tfont-size:15px;\r\n\tfont-weight:bold;\r\n\tpadding:6px 16px;\r\n}\r\n .admin{\r\n\tposition: relative;\r\n\tleft: 15px;\r\n\tfont-size:24pt;\r\n\tfont-style: normal;\r\n}\r\n\r\n\r\n \r\n  \r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9zaWRlbmF2QWRtaW4vc2lkZW5hdkFkbWluLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxhQUFhO0lBQ2Isc0JBQXNCO0lBQ3RCLGtCQUFrQjtJQUNsQixNQUFNO0lBQ04sU0FBUztJQUNULE9BQU87SUFDUCxRQUFRO0lBQ1IsbUJBQW1CO0VBQ3JCO0NBQ0Q7RUFDQyxtQkFBbUI7RUFDbkIsV0FBVztDQUNaO0NBQ0M7SUFDRSxlQUFlO0lBQ2YsOEVBQThFO0lBQzlFLFVBQVU7SUFDVixVQUFVO0VBQ1o7Q0FDRjtFQUNFLGtCQUFrQjtBQUNwQjtDQUdFO0lBQ0UsZ0JBQWdCO0VBQ2xCO0NBRUE7SUFDRTs0RkFDd0Y7SUFDeEYsT0FBTzs7RUFFVDtDQUNBO0NBQ0QsOEJBQThCOztFQUU3QjtDQUVBO0lBQ0U7aUVBQzZEO0lBQzdELGNBQWM7O0VBRWhCO0NBQ0E7O0NBRUQsbUJBQW1CO0NBQ25CLGtCQUFrQjtDQUNsQiw4QkFBOEI7OztFQUc3QjtDQUNGO0NBQ0MscUZBQXFGO0NBQ3JGLGlCQUFpQjtDQUNqQixrQkFBa0I7Q0FDbEIsaUJBQWlCO0NBQ2pCLGNBQWM7Q0FDZCxnQkFBZ0I7Q0FDaEIsZ0JBQWdCO0FBQ2pCO0NBRUE7Q0FDQyxrQkFBa0I7Q0FDbEIsVUFBVTtDQUNWLGNBQWM7Q0FDZCxrQkFBa0I7QUFDbkIiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL3NpZGVuYXZBZG1pbi9zaWRlbmF2QWRtaW4uY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5leGFtcGxlLWNvbnRhaW5lciB7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcclxuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIHRvcDogMDtcclxuICAgIGJvdHRvbTogMDtcclxuICAgIGxlZnQ6IDA7XHJcbiAgICByaWdodDogMDtcclxuICAgIGJhY2tncm91bmQ6ICMyM0MxODU7XHJcbiAgfVxyXG4gLm1hdC10b29sYmFyLm1hdC1wcmltYXJ5e1xyXG4gIGJhY2tncm91bmQ6ICMyM0MxODU7XHJcbiAgY29sb3I6ICNmZmY7XHJcbiB9XHJcbiAgLmV4YW1wbGUtaXMtbW9iaWxlIC5leGFtcGxlLXRvb2xiYXIge1xyXG4gICAgcG9zaXRpb246IGZpeGVkO1xyXG4gICAgLyogTWFrZSBzdXJlIHRoZSB0b29sYmFyIHdpbGwgc3RheSBvbiB0b3Agb2YgdGhlIGNvbnRlbnQgYXMgaXQgc2Nyb2xscyBwYXN0LiAqL1xyXG4gICAgei1pbmRleDogMjtcclxuICAgIHdpZHRoOiA2MCU7XHJcbiAgfVxyXG4ubWF0LWljb257XHJcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG59XHJcblxyXG5cclxuICBoMS5leGFtcGxlLWFwcC1uYW1lIHtcclxuICAgIG1hcmdpbi1sZWZ0OiA4cHg7XHJcbiAgfVxyXG4gXHJcbiAgLmV4YW1wbGUtc2lkZW5hdi1jb250YWluZXIge1xyXG4gICAgLyogV2hlbiB0aGUgc2lkZW5hdiBpcyBub3QgZml4ZWQsIHN0cmV0Y2ggdGhlIHNpZGVuYXYgY29udGFpbmVyIHRvIGZpbGwgdGhlIGF2YWlsYWJsZSBzcGFjZS4gVGhpc1xyXG4gICAgICAgY2F1c2VzIGA8bWF0LXNpZGVuYXYtY29udGVudD5gIHRvIGFjdCBhcyBvdXIgc2Nyb2xsaW5nIGVsZW1lbnQgZm9yIGRlc2t0b3AgbGF5b3V0cy4gKi9cclxuICAgIGZsZXg6IDE7XHJcblxyXG4gIH1cclxuICAubWF0LXNpZGVuYXZ7XHJcblx0YmFja2dyb3VuZDogcmdiKDI1NSwgMjU1LCAyNTUpO1xyXG5cdFxyXG4gIH1cclxuICBcclxuICAuZXhhbXBsZS1pcy1tb2JpbGUgLmV4YW1wbGUtc2lkZW5hdi1jb250YWluZXIge1xyXG4gICAgLyogV2hlbiB0aGUgc2lkZW5hdiBpcyBmaXhlZCwgZG9uJ3QgY29uc3RyYWluIHRoZSBoZWlnaHQgb2YgdGhlIHNpZGVuYXYgY29udGFpbmVyLiBUaGlzIGFsbG93cyB0aGVcclxuICAgICAgIGA8Ym9keT5gIHRvIGJlIG91ciBzY3JvbGxpbmcgZWxlbWVudCBmb3IgbW9iaWxlIGxheW91dHMuICovXHJcbiAgICBmbGV4OiAxIDAgYXV0bztcclxuXHJcbiAgfVxyXG4gIC5tYXQtbmF2LWxpc3R7XHJcbiAgICBcclxuXHRtYXJnaW4tcmlnaHQ6IDAuM2VtO1xyXG5cdG1hcmdpbi1sZWZ0OiAwLjNlbTtcclxuXHRiYWNrZ3JvdW5kOiByZ2IoMjU1LCAyNTUsIDI1NSk7XHJcblx0XHJcblx0XHJcbiAgfVxyXG4uYnV0MSB7XHJcblx0YmFja2dyb3VuZDpsaW5lYXItZ3JhZGllbnQodG8gYm90dG9tLCByZ2IoMjU1LCAyNTUsIDI1NSkgNSUsIHJnYigyNTUsIDI1NSwgMjU1KSAxMDAlKTtcclxuXHRib3JkZXItcmFkaXVzOjlweDtcclxuXHRjb2xvcjpyZ2IoMCwgMCwgMCk7XHJcblx0Zm9udC1mYW1pbHk6QXJpYWw7XHJcblx0Zm9udC1zaXplOjE1cHg7XHJcblx0Zm9udC13ZWlnaHQ6Ym9sZDtcclxuXHRwYWRkaW5nOjZweCAxNnB4O1xyXG59XHJcblxyXG4uYWRtaW57XHJcblx0cG9zaXRpb246IHJlbGF0aXZlO1xyXG5cdGxlZnQ6IDE1cHg7XHJcblx0Zm9udC1zaXplOjI0cHQ7XHJcblx0Zm9udC1zdHlsZTogbm9ybWFsO1xyXG59XHJcblxyXG5cclxuIFxyXG4gICJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = (".example-container {\r\n    display: flex;\r\n    flex-direction: column;\r\n    position: relative;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    background: #23C185;\r\n  }\r\n .mat-toolbar.mat-primary{\r\n  background: #23C185;\r\n  color: #fff;\r\n }\r\n .example-is-mobile .example-toolbar {\r\n    position: fixed;\r\n    /* Make sure the toolbar will stay on top of the content as it scrolls past. */\r\n    z-index: 2;\r\n    width: 60%;\r\n  }\r\n .mat-icon{\r\n  position: relative;\r\n}\r\n h1.example-app-name {\r\n    margin-left: 8px;\r\n  }\r\n .example-sidenav-container {\r\n    /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This\r\n       causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */\r\n    flex: 1;\r\n\r\n  }\r\n .mat-sidenav{\r\n\tbackground: rgb(255, 255, 255);\r\n\t\r\n  }\r\n .example-is-mobile .example-sidenav-container {\r\n    /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the\r\n       `<body>` to be our scrolling element for mobile layouts. */\r\n    flex: 1 0 auto;\r\n\r\n  }\r\n .mat-nav-list{\r\n    \r\n\tmargin-right: 0.3em;\r\n\tmargin-left: 0.3em;\r\n\tbackground: rgb(255, 255, 255);\r\n\t\r\n\t\r\n  }\r\n .but1 {\r\n\tbackground:linear-gradient(to bottom, rgb(255, 255, 255) 5%, rgb(255, 255, 255) 100%);\r\n\tborder-radius:9px;\r\n\tcolor:rgb(0, 0, 0);\r\n\tfont-family:Arial;\r\n\tfont-size:15px;\r\n\tfont-weight:bold;\r\n\tpadding:6px 16px;\r\n}\r\n .admin{\r\n\tposition: relative;\r\n\tleft: 15px;\r\n\tfont-size:24pt;\r\n\tfont-style: normal;\r\n}\r\n\r\n\r\n \r\n  \r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9zaWRlbmF2QWRtaW4vc2lkZW5hdkFkbWluLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxhQUFhO0lBQ2Isc0JBQXNCO0lBQ3RCLGtCQUFrQjtJQUNsQixNQUFNO0lBQ04sU0FBUztJQUNULE9BQU87SUFDUCxRQUFRO0lBQ1IsbUJBQW1CO0VBQ3JCO0NBQ0Q7RUFDQyxtQkFBbUI7RUFDbkIsV0FBVztDQUNaO0NBQ0M7SUFDRSxlQUFlO0lBQ2YsOEVBQThFO0lBQzlFLFVBQVU7SUFDVixVQUFVO0VBQ1o7Q0FDRjtFQUNFLGtCQUFrQjtBQUNwQjtDQUdFO0lBQ0UsZ0JBQWdCO0VBQ2xCO0NBRUE7SUFDRTs0RkFDd0Y7SUFDeEYsT0FBTzs7RUFFVDtDQUNBO0NBQ0QsOEJBQThCOztFQUU3QjtDQUVBO0lBQ0U7aUVBQzZEO0lBQzdELGNBQWM7O0VBRWhCO0NBQ0E7O0NBRUQsbUJBQW1CO0NBQ25CLGtCQUFrQjtDQUNsQiw4QkFBOEI7OztFQUc3QjtDQUNGO0NBQ0MscUZBQXFGO0NBQ3JGLGlCQUFpQjtDQUNqQixrQkFBa0I7Q0FDbEIsaUJBQWlCO0NBQ2pCLGNBQWM7Q0FDZCxnQkFBZ0I7Q0FDaEIsZ0JBQWdCO0FBQ2pCO0NBRUE7Q0FDQyxrQkFBa0I7Q0FDbEIsVUFBVTtDQUNWLGNBQWM7Q0FDZCxrQkFBa0I7QUFDbkIiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL3NpZGVuYXZBZG1pbi9zaWRlbmF2QWRtaW4uY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5leGFtcGxlLWNvbnRhaW5lciB7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcclxuICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICAgIHRvcDogMDtcclxuICAgIGJvdHRvbTogMDtcclxuICAgIGxlZnQ6IDA7XHJcbiAgICByaWdodDogMDtcclxuICAgIGJhY2tncm91bmQ6ICMyM0MxODU7XHJcbiAgfVxyXG4gLm1hdC10b29sYmFyLm1hdC1wcmltYXJ5e1xyXG4gIGJhY2tncm91bmQ6ICMyM0MxODU7XHJcbiAgY29sb3I6ICNmZmY7XHJcbiB9XHJcbiAgLmV4YW1wbGUtaXMtbW9iaWxlIC5leGFtcGxlLXRvb2xiYXIge1xyXG4gICAgcG9zaXRpb246IGZpeGVkO1xyXG4gICAgLyogTWFrZSBzdXJlIHRoZSB0b29sYmFyIHdpbGwgc3RheSBvbiB0b3Agb2YgdGhlIGNvbnRlbnQgYXMgaXQgc2Nyb2xscyBwYXN0LiAqL1xyXG4gICAgei1pbmRleDogMjtcclxuICAgIHdpZHRoOiA2MCU7XHJcbiAgfVxyXG4ubWF0LWljb257XHJcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG59XHJcblxyXG5cclxuICBoMS5leGFtcGxlLWFwcC1uYW1lIHtcclxuICAgIG1hcmdpbi1sZWZ0OiA4cHg7XHJcbiAgfVxyXG4gXHJcbiAgLmV4YW1wbGUtc2lkZW5hdi1jb250YWluZXIge1xyXG4gICAgLyogV2hlbiB0aGUgc2lkZW5hdiBpcyBub3QgZml4ZWQsIHN0cmV0Y2ggdGhlIHNpZGVuYXYgY29udGFpbmVyIHRvIGZpbGwgdGhlIGF2YWlsYWJsZSBzcGFjZS4gVGhpc1xyXG4gICAgICAgY2F1c2VzIGA8bWF0LXNpZGVuYXYtY29udGVudD5gIHRvIGFjdCBhcyBvdXIgc2Nyb2xsaW5nIGVsZW1lbnQgZm9yIGRlc2t0b3AgbGF5b3V0cy4gKi9cclxuICAgIGZsZXg6IDE7XHJcblxyXG4gIH1cclxuICAubWF0LXNpZGVuYXZ7XHJcblx0YmFja2dyb3VuZDogcmdiKDI1NSwgMjU1LCAyNTUpO1xyXG5cdFxyXG4gIH1cclxuICBcclxuICAuZXhhbXBsZS1pcy1tb2JpbGUgLmV4YW1wbGUtc2lkZW5hdi1jb250YWluZXIge1xyXG4gICAgLyogV2hlbiB0aGUgc2lkZW5hdiBpcyBmaXhlZCwgZG9uJ3QgY29uc3RyYWluIHRoZSBoZWlnaHQgb2YgdGhlIHNpZGVuYXYgY29udGFpbmVyLiBUaGlzIGFsbG93cyB0aGVcclxuICAgICAgIGA8Ym9keT5gIHRvIGJlIG91ciBzY3JvbGxpbmcgZWxlbWVudCBmb3IgbW9iaWxlIGxheW91dHMuICovXHJcbiAgICBmbGV4OiAxIDAgYXV0bztcclxuXHJcbiAgfVxyXG4gIC5tYXQtbmF2LWxpc3R7XHJcbiAgICBcclxuXHRtYXJnaW4tcmlnaHQ6IDAuM2VtO1xyXG5cdG1hcmdpbi1sZWZ0OiAwLjNlbTtcclxuXHRiYWNrZ3JvdW5kOiByZ2IoMjU1LCAyNTUsIDI1NSk7XHJcblx0XHJcblx0XHJcbiAgfVxyXG4uYnV0MSB7XHJcblx0YmFja2dyb3VuZDpsaW5lYXItZ3JhZGllbnQodG8gYm90dG9tLCByZ2IoMjU1LCAyNTUsIDI1NSkgNSUsIHJnYigyNTUsIDI1NSwgMjU1KSAxMDAlKTtcclxuXHRib3JkZXItcmFkaXVzOjlweDtcclxuXHRjb2xvcjpyZ2IoMCwgMCwgMCk7XHJcblx0Zm9udC1mYW1pbHk6QXJpYWw7XHJcblx0Zm9udC1zaXplOjE1cHg7XHJcblx0Zm9udC13ZWlnaHQ6Ym9sZDtcclxuXHRwYWRkaW5nOjZweCAxNnB4O1xyXG59XHJcblxyXG4uYWRtaW57XHJcblx0cG9zaXRpb246IHJlbGF0aXZlO1xyXG5cdGxlZnQ6IDE1cHg7XHJcblx0Zm9udC1zaXplOjI0cHQ7XHJcblx0Zm9udC1zdHlsZTogbm9ybWFsO1xyXG59XHJcblxyXG5cclxuIFxyXG4gICJdfQ== */");
 
 /***/ }),
 

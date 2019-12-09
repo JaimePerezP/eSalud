@@ -26,6 +26,7 @@ export class RegistrarAdminComponent implements OnInit {
             dni: ['', Validators.required],
             nombre: ['', Validators.required],
             apellidos: ['', Validators.required],
+            localidad: '',
             centro: ['', Validators.required],
             tel: ['', Validators.required],
             correo: ['', Validators.required],
@@ -93,10 +94,10 @@ export class RegistrarAdminComponent implements OnInit {
             .subscribe(
                 data => {
                     this.alertService.success('Registro completado', true);
-                    console.log("[CLIENTE] Médico registrado.");
+                    console.log("[CLIENTE] Administrador registrado.");
                 },
                 error => {
-                    this.alertService.error('Error: El médico ya está registrado.');
+                    this.alertService.error('Error: El administrador ya está registrado.');
                     this.loading = false;
                 });
 
