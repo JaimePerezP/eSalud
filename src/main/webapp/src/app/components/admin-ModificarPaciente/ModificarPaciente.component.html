@@ -16,7 +16,7 @@
 
     <!-- Symbol Column -->
     <ng-container matColumnDef="numTelefono">
-      <th mat-header-cell *matHeaderCellDef> Telefono </th>
+      <th mat-header-cell *matHeaderCellDef> Teléfono </th>
       <td mat-cell *matCellDef="let element"> {{element.numTelefono}} </td>
     </ng-container>
 
@@ -27,12 +27,12 @@
     </ng-container>
 
     <ng-container matColumnDef="centro">
-      <th mat-header-cell *matHeaderCellDef> Centro </th>
+      <th mat-header-cell *matHeaderCellDef> Centro médico </th>
       <td mat-cell *matCellDef="let element"> {{element.centro}} </td>
     </ng-container>
 
     <ng-container matColumnDef="email">
-      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <th mat-header-cell *matHeaderCellDef> Correo electrónico </th>
       <td mat-cell *matCellDef="let element"> {{element.email}} </td>
     </ng-container>
 
@@ -41,7 +41,7 @@
       <td mat-cell *matCellDef="let element"> {{element.rol}} </td>
     </ng-container>
 		<ng-container matColumnDef="action">
-			<th mat-header-cell *matHeaderCellDef> Action </th>
+			<th mat-header-cell *matHeaderCellDef> Acción </th>
 			<td mat-cell *matCellDef="let element" class="action-link">
 				<button mat-raised-button (click)="openDialog('Update',element)" mat-flat-button color="green"
 					class="button1">Editar</button>

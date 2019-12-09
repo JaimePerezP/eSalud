@@ -5,12 +5,12 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-25">
-                    <label for="fname">Dni</label>
+                    <label for="fname">DNI</label>
                 </div>
                 <div class="col-75">
                     <input type="text" placeholder="DNI" formControlName="dni" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dni.errors }">
                     <div *ngIf="submitted && f.dni.errors" class="invalid-feedback">
-                        <div *ngIf="f.dni.errors.required">Escribe un Dni</div>
+                        <div *ngIf="f.dni.errors.required">Escriba un DNI</div>
                     </div>
                 </div>
             </div>
@@ -21,7 +21,7 @@
                 <div class="col-75">
                     <input type="text" placeholder="Nombre" formControlName="nombre" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nombre.errors }" />
                     <div *ngIf="submitted && f.nombre.errors" class="invalid-feedback">
-                        <div *ngIf="f.nombre.errors.required">Escribe un nombre</div>
+                        <div *ngIf="f.nombre.errors.required">Escriba un nombre</div>
                     </div>
                 </div>
             </div>
@@ -32,7 +32,7 @@
                 <div class="col-75">
                     <input type="text" placeholder="Apellidos" formControlName="apellidos" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.apellidos.errors }" />
                     <div *ngIf="submitted && f.apellidos.errors" class="invalid-feedback">
-                        <div *ngIf="f.apellidos.errors.required">Escribe unos apellidos</div>
+                        <div *ngIf="f.apellidos.errors.required">Escriba unos apellidos</div>
                     </div>
                 </div>
             </div>
@@ -67,23 +67,23 @@
             </div>
             <div class="row">
                 <div class="col-25">
-                    <label for="fname">Centro</label>
+                    <label for="fname">Centro médico</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" placeholder="Centro" formControlName="centro" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.centro.errors }" />
+                    <input type="text" placeholder="Centro médico" formControlName="centro" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.centro.errors }" />
                     <div *ngIf="submitted && f.centro.errors" class="invalid-feedback">
-                        <div *ngIf="f.centro.errors.required">Escriba un centro</div>
+                        <div *ngIf="f.centro.errors.required">Escriba un centro médico</div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-25">
-                    <label for="fname">Telefono</label>
+                    <label for="fname">Teléfono</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" placeholder="Telefono" formControlName="tel" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.tel.errors }">
+                    <input type="text" placeholder="Teléfono" formControlName="tel" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.tel.errors }">
                     <div *ngIf="submitted && f.tel.errors" class="invalid-feedback">
-                        <div *ngIf="f.tel.errors.required">Escriba un telefono</div>
+                        <div *ngIf="f.tel.errors.required">Escriba un teléfono</div>
                     </div>
                 </div>
             </div>
@@ -101,7 +101,7 @@
             
         </div>
         <div class="row justify-content-center">
-            <p><input type="submit" value="Registrarse" class="button2"></p>
-            <p><input type="submit" value="Cancelar" class="button1"></p>
+            <p><input type="submit" value="Registrar  " class="button2"></p>
+            <p><input type="submit" value="Cancelar  " class="button1"></p>
         </div>
     </form>
