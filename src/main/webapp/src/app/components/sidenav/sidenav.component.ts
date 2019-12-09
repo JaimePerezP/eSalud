@@ -13,14 +13,20 @@ export class SidenavComponent implements OnInit {
   router: Router;
   authService: AuthService;
   mobileQuery: MediaQueryList;
+  rol = this.readLocalStorageValue('currentUser');
 
-  fillerNav = [
+  fillerNav= [
+      { name: "Citas", route: "citas", icon: "assignment" },
+      { name: "Registrar Cita", route: "RegistrarCita", icon: "edit" },
+      { name: "Cambiar a modo medico", route: "Cambio", icon: "edit" },
+      { name: "Salir", route: "/", icon: "logout" }
+  ]
+
+  fillerNav2=[
     { name: "Citas", route: "citas", icon: "assignment" },
     { name: "Registrar Cita", route: "RegistrarCita", icon: "edit" },
     { name: "Salir", route: "/", icon: "logout" }
   ]
-
-
 
   fillerContent = Array.from({ length: 50 }, () =>
     `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
@@ -36,6 +42,11 @@ export class SidenavComponent implements OnInit {
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
     this.authService = authService;
+  }
+  readLocalStorageValue(key: string): string {
+    var item = JSON.parse(localStorage.getItem(key));
+    var role = item.rol;
+    return role;
   }
 
   ngOnDestroy(): void {

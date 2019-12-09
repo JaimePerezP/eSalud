@@ -30,6 +30,7 @@ const routes: Routes = [
   { path: 'citas/RegistrarCita/citas', redirectTo: 'citas' },
   { path: 'citas/RegistrarCita/RegistrarCita', redirectTo: 'citas/RegistrarCita' },
   { path: 'citas/citas', redirectTo: 'citas' },
+  { path: 'citas/Cambio', redirectTo: 'medico'},
   {
     path: 'citas', component: SidenavComponent, canActivate: [AuthGuard],
     children: [

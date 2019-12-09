@@ -265,7 +265,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"example-container\" [class.example-is-mobile]=\"mobileQuery.matches\" *ngIf=\"shouldRun\">\r\n    <mat-toolbar color=\"primary\" class=\"example-toolbar\">\r\n      <button mat-icon-button (click)=\"snav.toggle()\" style=\"border: 0ch\">\r\n        <mat-icon>menu</mat-icon></button>  \r\n      <h1 class=\"example-app-name\">Aplicacion de citas</h1>\r\n\r\n    </mat-toolbar>\r\n    <mat-sidenav-container class=\"example-sidenav-container\"\r\n                           [style.marginTop.px]=\"mobileQuery.matches ? 56 : 0\" >\r\n      <mat-sidenav #snav [mode]=\"mobileQuery.matches ? 'over' : 'side'\"\r\n                   [fixedInViewport]=\"mobileQuery.matches\" \r\n                   fixedTopGap=\"56\"\r\n                   [opened]=\"true\"> \r\n        <mat-nav-list>\r\n          <a mat-list-item [routerLink]=\"nav.route\" *ngFor=\"let nav of fillerNav\">\r\n              <mat-icon>{{nav.icon}}</mat-icon>\r\n            {{nav.name}}</a>\r\n        </mat-nav-list>\r\n      </mat-sidenav>\r\n  \r\n      <mat-sidenav-content>\r\n          <router-outlet></router-outlet>\r\n      </mat-sidenav-content>\r\n\r\n    </mat-sidenav-container>\r\n  </div>\r\n  \r\n  <div *ngIf=\"!shouldRun\">Please open on Stackblitz to see result</div>\r\n ");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"example-container\" [class.example-is-mobile]=\"mobileQuery.matches\" *ngIf=\"shouldRun\">\r\n    <mat-toolbar color=\"primary\" class=\"example-toolbar\">\r\n      <button mat-icon-button (click)=\"snav.toggle()\" style=\"border: 0ch\">\r\n        <mat-icon>menu</mat-icon></button>  \r\n      <h1 class=\"example-app-name\">Aplicacion de citas</h1>\r\n\r\n    </mat-toolbar>\r\n    <mat-sidenav-container class=\"example-sidenav-container\"\r\n                           [style.marginTop.px]=\"mobileQuery.matches ? 56 : 0\" >\r\n      <mat-sidenav #snav [mode]=\"mobileQuery.matches ? 'over' : 'side'\"\r\n                   [fixedInViewport]=\"mobileQuery.matches\" \r\n                   fixedTopGap=\"56\"\r\n                   [opened]=\"true\"> \r\n        <ng-container *ngIf=\"rol==='medico'\">\r\n          <mat-nav-list>\r\n            <a mat-list-item [routerLink]=\"nav.route\" *ngFor=\"let nav of fillerNav\">\r\n                <mat-icon>{{nav.icon}}</mat-icon>\r\n              {{nav.name}}</a>\r\n          </mat-nav-list>\r\n        </ng-container>\r\n        <ng-container *ngIf=\"rol==='paciente'\">\r\n          <mat-nav-list>\r\n            <a mat-list-item [routerLink]=\"nav.route\" *ngFor=\"let nav of fillerNav2\">\r\n                <mat-icon>{{nav.icon}}</mat-icon>\r\n              {{nav.name}}</a>\r\n          </mat-nav-list>\r\n        </ng-container>\r\n      </mat-sidenav>\r\n  \r\n      <mat-sidenav-content>\r\n          <router-outlet></router-outlet>\r\n      </mat-sidenav-content>\r\n\r\n    </mat-sidenav-container>\r\n  </div>\r\n  \r\n  <div *ngIf=\"!shouldRun\">Please open on Stackblitz to see result</div>\r\n ");
 
 /***/ }),
 
@@ -3197,7 +3197,14 @@ __webpack_require__.r(__webpack_exports__);
 
 let SidenavComponent = class SidenavComponent {
     constructor(changeDetectorRef, media, authService) {
+        this.rol = this.readLocalStorageValue('currentUser.rol');
         this.fillerNav = [
+            { name: "Citas", route: "citas", icon: "assignment" },
+            { name: "Registrar Cita", route: "RegistrarCita", icon: "edit" },
+            { name: "Cambiar a modo medico", route: "Cambio", icon: "edit" },
+            { name: "Salir", route: "/", icon: "logout" }
+        ];
+        this.fillerNav2 = [
             { name: "Citas", route: "citas", icon: "assignment" },
             { name: "Registrar Cita", route: "RegistrarCita", icon: "edit" },
             { name: "Salir", route: "/", icon: "logout" }
@@ -3212,6 +3219,9 @@ let SidenavComponent = class SidenavComponent {
         this._mobileQueryListener = () => changeDetectorRef.detectChanges();
         this.mobileQuery.addListener(this._mobileQueryListener);
         this.authService = authService;
+    }
+    readLocalStorageValue(key) {
+        return localStorage.getItem(key);
     }
     ngOnDestroy() {
         this.mobileQuery.removeListener(this._mobileQueryListener);
@@ -3479,7 +3489,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_3__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\jaime\Documents\GitHub\eSalud\src\main\webapp\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\jorge\Documents\GitHub\eSalud\src\main\webapp\src\main.ts */"./src/main.ts");
 
 
 /***/ })
