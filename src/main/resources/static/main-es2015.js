@@ -933,7 +933,7 @@ EspecialidadesService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*!************************************!*\
   !*** ./src/app/_services/index.ts ***!
   \************************************/
-/*! exports provided: AuthService, UserService, CitasService, AlertService, EspecialidadesService */
+/*! exports provided: AuthService, EspecialidadesService, UserService, CitasService, AlertService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3460,7 +3460,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const environment = {
     production: false,
-    apiUrl: 'https://esalud-e4.herokuapp.com',
+    apiUrl: 'http://localhost:8080',
 };
 /*
  * For easier debugging in development mode, you can import the following file
