@@ -166,6 +166,7 @@ public class Registro_Usuarios_GestorSteps {
 			driver.findElementByXPath(
 					"/html/body/linl/app-root/app-sidenavadmin/div/mat-sidenav-container/mat-sidenav-content/app-registraradmin/div/form/div[2]/p[1]/input")
 					.click();
+			driver.quit();
 		}
 	}
 

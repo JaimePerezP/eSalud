@@ -21,15 +21,6 @@ Feature: Cambiar de la ventana de gestor a paciente y de paciente a gestor solo 
     | <rol> |  
     
   And se abre la vista de paciente
-  
-  And se pulsa boton de volver a la vista correspondiente al usuario
-    | rol   |
-    | <rol> |
-    
-  Then vuelve a la vista correspondiente al usuario
-    | rol   |
-    | <rol> |
-
 	
 	Examples: 
   	|testCase	| resultadoEsperado 	 |	 dni	  | nombre	  	| apellidos      | pwd 					| numTelefono    | email             |  localidad   | rol      | especialidad   | 
