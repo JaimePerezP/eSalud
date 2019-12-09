@@ -60,7 +60,7 @@ public class EspecialidadServiceImpl implements EspecialidadService {
 			esp = especialidadDesencriptado.get();
 		}
 
-      return especialidadDesencriptado.get();
+      return esp;
 
     } else {
 

@@ -62,7 +62,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 			usu = userDesencriptado.get();
 		}
 
-      return userDesencriptado.get();
+      return usu;
 
     } else {
 
