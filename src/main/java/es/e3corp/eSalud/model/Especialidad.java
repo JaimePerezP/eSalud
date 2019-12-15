@@ -48,7 +48,7 @@ public class Especialidad {
   }
 
   public Especialidad() {
-    // TODO Auto-generated constructor stub
+	this.especialidad = "Sin definir";
   }
 
   public String getId() {

@@ -24,7 +24,6 @@ import es.e3corp.eSalud.model.Usuario;
 public class Utilidades {
 	private static final String UTF8 = "utf-8";
 	private static final String DESEDE = "DESede";
-	private static final String TAMAÑO = "Tamaño de la lista normal: ";
 
 	/**
 	 * Método para encriptar texto.
@@ -107,11 +106,10 @@ public class Utilidades {
 			user.get().setLocalidad(desencriptar(user.get().getLocalidad()));
 			user.get().setCentro(desencriptar(user.get().getCentro()));
 			user.get().setEmail(desencriptar(user.get().getEmail()));
-			
+
 			return user;
 		} catch (Exception ex) {
-
-			return null;
+			return Optional.empty();
 		}
 
 	}
@@ -266,27 +264,27 @@ public class Utilidades {
 			return cita;
 		} catch (Exception ex) {
 
-			return null;
+			return Optional.empty();
 		}
 	}
 
 	public static Optional<Especialidad> desencriptarOptionalEspecialidad(final Optional<Especialidad> especialidad) {
 		try {
-			
+
 			especialidad.get().setEspecialidad(desencriptar(especialidad.get().getEspecialidad()));
 			especialidad.get().setHoraInicio(desencriptar(especialidad.get().getHoraInicio()));
 			especialidad.get().setHoraFin(desencriptar(especialidad.get().getHoraFin()));
 			especialidad.get().setTiempoConsulta(desencriptar(especialidad.get().getTiempoConsulta()));
 			return especialidad;
 		} catch (Exception ex) {
-			return null;
+			return Optional.empty();
 		}
 	}
 
 	public static List<Especialidad> desencriptarListaEspecialidades(Optional<List<Especialidad>> especialidades) {
 		final List<Especialidad> especialidadesDesencriptado = new ArrayList<>();
 
-		List<Especialidad> e = null;
+		List<Especialidad> e = new ArrayList<Especialidad>();
 
 		if (especialidades.isPresent()) {
 			e = especialidades.get();

@@ -121,6 +121,8 @@ public class Usuario {
    * @author e3corp
    */
   public Usuario() {
+	this.dni = "Sin definir";
+	this.contrasena = "Sin definir";
 
   }
 

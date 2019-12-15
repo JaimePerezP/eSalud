@@ -62,7 +62,7 @@ public class Cita {
 	}
 
 	public Cita() {
-		// TODO Auto-generated constructor stub
+		this.paciente = "Sin definir";
 	}
 
 	public String getId() {
